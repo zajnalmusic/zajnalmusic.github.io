@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Neurofolk Sample Pack by k0v1</title>
+<title>Zajnal</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&amp;subset=latin-ext" rel="stylesheet">
 
 <style>
@@ -20,43 +20,36 @@ body {
 	font-family: "Roboto 900", sans-serif;
 	font-size: 1.5vw;
 	width: 100%;
-	min-height: 45vw;
-	height: 75%;
-	margin-top: 5%;
-	margin-bottom: 5%;
-	position: absolute;
-	transform: translate (-25% 0%);
-}
-
-#logo {
-	position: absolute;
-	top: 0vw;
-	image-rendering: pixelated;
-}
-
-#band {
-	position: absolute;
-	bottom: 0vw;
-	image-rendering: pixelated;
-}
-
-#menu {
-	position: absolute;
-	top: 22%;
+	height: 100%;
 }
 
 .center {
-	display: block;
+	width: 50%;
+	max-width: 800px;
 	margin-left: auto;
 	margin-right: auto;
-	width: 25%;
+}	
+
+#logo {
+	margin-top: 24pt;
+	width: 100%;
+}
+
+#band {
+	image-rendering: pixelated;
+	width: 100%;
+	margin-bottom: 48pt;
+}
+
+#menu {
+	margin-top: 12pt;
+	margin-bottom: 12pt;
+	width: 100%;
 }
 
 h2 {
 	font-weight: 700;
 	font-size: 24pt;
-	margin: 0;
-	padding-right: 2vw;
 }
 
 a {
@@ -73,7 +66,11 @@ a:hover {
 }
 
 /*MEDIA QUERYS*/
-
+@media screen and (max-width: 800px) {
+	.center {
+		width: 75%;
+}	
+}
 
 
 </style>
@@ -85,12 +82,14 @@ a:hover {
 
 <img id="logo" class="center" src="logotype_white.svg" alt="Zajnal">
 
-<div id="menu" class="center">
-<h2><a href="https://www.youtube.com/channel/UCPXgaompyUasfB6eC-Q2_mw" target="_blank">YOUTUBE</a> </h2></h2>
-<h2><a href="https://www.facebook.com/zajnalmusic" target="_blank">FACEBOOK</a></h2>
-<h2><a href="https://www.instagram.com/zajnalmusic/" target="_blank">INSTAGRAM</a></h2>
-<h2><a href="https://soundcloud.com/zajnalmusic" target="_blank">SOUNDCLOUD</a></h2>
-<h2><a href="https://drive.google.com/open?id=1j86YCEiEvs9uO-lXxsO7skr7QW4q_tWy" target="_blank">PRESS</a></h2>
+<div id="menu">
+<h2>
+<a href="https://www.youtube.com/channel/UCPXgaompyUasfB6eC-Q2_mw" target="_blank">YOUTUBE</a>
+<a href="https://www.facebook.com/zajnalmusic" target="_blank">FACEBOOK</a>
+<a href="https://www.instagram.com/zajnalmusic/" target="_blank">INSTAGRAM</a>
+<a href="https://soundcloud.com/zajnalmusic" target="_blank">SOUNDCLOUD</a>
+<a href="https://drive.google.com/open?id=1j86YCEiEvs9uO-lXxsO7skr7QW4q_tWy" target="_blank">PRESS</a>
+</h2>
 </div>
 
 <img id="band" class="center" src="zajnal.png" alt="Band Illustration">
