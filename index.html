@@ -27,10 +27,16 @@ h1 {
   font-weight: 200;
 }
 
-p.z {
-	font-weight: 300;
+.z-bio {
   max-width: 800px;
-  margin: 16px auto 16px auto;
+}
+
+.z-contact {
+  max-width: 400px;
+}
+
+.z-music {
+  max-width: 700px;
 }
 
 .z-scroll {
@@ -58,13 +64,22 @@ p.z {
   font-weight: 300;
 }
 
-.z-btn-hero {
+.z-btn-std {
+  width: 100%;
+  max-width: 250px;
 	transition: 0.2s ease-out;
-  border-width: 3px !important;
-  font-weight: 450;
-  width: 16em;
+  font-weight: 300;
 }
 
+.z-btn-hero {
+	border-width: 3px !important;
+  font-weight: 450;
+  width: 380px;
+}
+
+.z-logo {
+  width: 380px;
+}
 
 .z-wide {
 	letter-spacing: 0.7em;
@@ -81,14 +96,12 @@ p.z {
   max-width: 800px;
 }
 
-.z-btn-contact {
-  width: 100%;
-  max-width: 12em;
+.z-contact {
+  max-width: 500px;
+  margin: auto;
 }
 
 </style>
-
-<script src=""></script>
 
 </head>
 
@@ -98,7 +111,7 @@ p.z {
 	<video autoplay muted loop id="zajnal" class="z-video-hero">
 		<source src="assets/zajnal_hero.mp4" type="video/mp4">
 	</video>
-	<div class="w3-display-middle">
+	<div class="w3-display-middle w3-center" style="width: 450px">
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.43 157.27" class="z-logo">
         <defs>
           <style>
@@ -128,17 +141,23 @@ p.z {
 
 </header>
 
-<section id="bio" class="w3-container w3-black w3-padding-64 z-fullscreen">
-  <div class="">
-    <h1 class="w3-center z-wide">BIO<h1>
-      <p class="z w3-xlarge">2015-ben indultunk furulya-citera duóként, öt éve működünk – cajonnal és basszusgitárral kiegészülve – zenekarként. Nem a népzene felől kanyarodunk a kortárs felé, és nem is viszont: úgy adódott, hogy népi és urbánus hatások mindig párhuzamosan voltak jelen az életünkben, így a produkciónk sem keresgélés, hanem lenyomat.</p>
-      <p class="z w3-xlarge">2019-ben jelent meg első kislemezünk, a Pusztafless, 2020-ban pedig bejutottunk a Szimpla Lemming programjába, ott voltunk a Veszprémi Utcazene Fesztiválon, majd az Öröm a zene tehetségkutatón az év felfedezettje díjat is megkaptuk.</p>
-      <p class="z w3-xlarge">Idén induló előadóként részt veszünk az NKA Hangfoglaló programjában, valamint a Kreatív Európa társfinanszírozásában megvalósuló, országhatárokon átívelő TREMOLO Projectben. Legújabb, Sötétkamra című kislemezünket október 14-én, az A38 hajón mutattuk be – az erről az anyagról singleként megjelent Csillagánizs című dalunk videoklipje pedig ott volt az idei Klipszemle versenyprogramjában is.</p>
+<section id="bio" class="w3-container w3-black z-fullscreen">
+  <div class="w3-content z-bio">
+    <h1 class="w3-center w3-padding-64 z-wide">BIO<h1>
+    <div class="w3-xlarge">
+      <p>2015-ben indultunk furulya-citera duóként, öt éve működünk – cajonnal és basszusgitárral kiegészülve – zenekarként. Nem a népzene felől kanyarodunk a kortárs felé, és nem is viszont: úgy adódott, hogy népi és urbánus hatások mindig párhuzamosan voltak jelen az életünkben, így a produkciónk sem keresgélés, hanem lenyomat.</p>
+      <div class="w3-panel w3-leftbar w3-black">
+        <p class="w3-xxlarge">
+        <i>&bdquo;...a produkciónk sem keresgélés, hanem lenyomat.&rdquo;</i></p>
+      </div>
+      <p>2019-ben jelent meg első kislemezünk, a Pusztafless, 2020-ban pedig bejutottunk a Szimpla Lemming programjába, ott voltunk a Veszprémi Utcazene Fesztiválon, majd az Öröm a zene tehetségkutatón az év felfedezettje díjat is megkaptuk.</p>
+      <p>Idén induló előadóként részt veszünk az NKA Hangfoglaló programjában, valamint a Kreatív Európa társfinanszírozásában megvalósuló, országhatárokon átívelő TREMOLO Projectben. Legújabb, Sötétkamra című kislemezünket október 14-én, az A38 hajón mutattuk be – az erről az anyagról singleként megjelent Csillagánizs című dalunk videoklipje pedig ott volt az idei Klipszemle versenyprogramjában is.</p>
+    </div>
   </div>
 </section>
 
-<section id="members" class="w3-container w3-black w3-padding-64 z-fullscreen">
-	<h1 class="w3-center z-wide">TAGOK<h1>
+<section id="members" class="w3-container w3-black z-fullscreen">
+	<h1 class="w3-center w3-padding-64 z-wide">TAGOK<h1>
 
 	<div class="w3-content w3-display-container z-members">
 		<div class="w3-display-container w3-animate-opacity mySlides">
@@ -189,67 +208,74 @@ p.z {
 	</script>
 </section>
 
-<section id="music" class="w3-container w3-section w3-padding-64 z-fullscreen">
-  <div style="margin: auto">
-  <h1 class="w3-center z-wide">ZENE<h1>
-	<div class="w3-row w3-xlarge w3-center">
+<section id="music" class="w3-container z-fullscreen">
+  <div class="w3-content w3-center z-music">
+    <h1 class="w3-center w3-padding-64 z-wide">ZENE<h1>
 
-	<div id="sotetkamra" class="w3-half">
-		<a href="https://open.spotify.com/album/3iOPd3yPBtG2YyS3ltQRSy" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn">sötétkamra</a>
-	</div>
-	<div id="vakfolt" class="w3-half">
-		<a href="https://youtu.be/SoqpvfHThXU" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn">vakfolt</a>
-	</div>
+    <div class="w3-row w3-xlarge">
+    	<div id="sotetkamra" class="w3-half">
+    	   <a href="https://open.spotify.com/album/3iOPd3yPBtG2YyS3ltQRSy" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-std">sötétkamra</a>
+    	</div>
+    	<div id="vakfolt" class="w3-half">
+    	   <a href="https://youtu.be/SoqpvfHThXU" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-std">vakfolt</a>
+    	</div>
+  	</div>
 
-	</div>
-
-	<div class="w3-row w3-xlarge w3-center">
-
-	<div id="csillaganizs" class="w3-half">
-		<a href="https://youtu.be/jk9oy0XXVuY" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn">csillagánizs</a>
-	</div>
-	<div id="komlo" class="w3-half">
-		<a href="https://www.youtube.com/watch?v=2qkPaPY1UXA" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn">komló</a>
-	</div>
-
-	</div>
+  	<div class="w3-cell-row w3-xlarge">
+    	<div id="csillaganizs" class="w3-half">
+    	   <a href="https://youtu.be/jk9oy0XXVuY" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-std">csillagánizs</a>
+    	</div>
+    	<div id="komlo" class="w3-half">
+    	   <a href="https://www.youtube.com/watch?v=2qkPaPY1UXA" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-std">komló</a>
+    	</div>
+    </div>
   </div>
 </section>
 
-<section id="contact" class="w3-container w3-black w3-padding-64 z-fullscreen">
-	<h1 class="w3-center z-wide">KONTAKT<h1>
-	<div class="w3-container w3-center w3-xlarge">
-    <a href="mailto:zajnalmusic@gmail.com" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn">
+<section id="contact" class="w3-container w3-black z-fullscreen">
+	<h1 class="w3-center w3-padding-64 z-wide">KONTAKT<h1>
+	<div class="w3-content w3-center w3-xlarge z-contact">
+    <a href="mailto:zajnalmusic@gmail.com" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn-std">
 			e-mail
 		</a>
 		<br>
-		<a href="https://www.instagram.com/zajnalmusic/" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn">
+		<a href="https://www.instagram.com/zajnalmusic/" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn-std">
 			instagram
 		</a>
-		<a href="https://www.facebook.com/zajnalmusic/" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn">
+		<a href="https://www.facebook.com/zajnalmusic/" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn-std">
 			facebook
 		</a>
-		<a href="https://www.youtube.com/zajnalmusic/" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn">
+		<a href="https://www.youtube.com/zajnalmusic/" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn-std">
 			youtube
 		</a>
-		<a href="https://open.spotify.com/artist/0fPavCFAklDixqi98zT05V/" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn">
+		<a href="https://open.spotify.com/artist/0fPavCFAklDixqi98zT05V/" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn-std">
 			spotify
 		</a>
-		<a href="https://soundcloud.com/zajnalmusic/" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn">
+		<a href="https://soundcloud.com/zajnalmusic/" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn-std">
 			soundcloud
 		</a>
 	</div>
 </section>
 
 <footer class="w3-container w3-black w3-center">
-	<p>Copyright blabla</p>
+	<p>&#169; Zajnal 2021</p>
 </footer>
 
-<nav class="w3-center w3-black">
-	<a href="#bio" class="w3-animate">BIO</a>
-	<a href="#members">TAGOK</a>
-	<a href="#music">ZENE</a>
-	<a href="#contact">KONTAKT</a>
+<nav class="w3-bottom">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3 w3-center">
+    	<a href="#bio" class="w3-animate">BIO</a>
+    </div>
+    <div class="w3-col s3 w3-center">
+    	<a href="#members">TAGOK</a>
+    </div>
+    <div class="w3-col s3 w3-center">
+    	<a href="#music">ZENE</a>
+    </div>
+    <div class="w3-col s3 w3-center">
+    	<a href="#contact">KONTAKT</a>
+    </div>
+  </div>
 </nav>
 
 </body>
