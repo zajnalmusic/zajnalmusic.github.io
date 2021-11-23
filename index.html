@@ -15,21 +15,14 @@
 
 <style>
 
-body,h1,h1,h3,h4,h5,h6 {
+body,h1,h2,h3,h4,h5,h6 {
   font-family: Jost, sans-serif;
   font-weight: 300;
+  overflow-x: hidden;
 }
+
 html {
-  overflow-y: hidden;
   scroll-behavior: smooth;
-}
-
-#bio {
-    overflow-y: scroll;
-}
-
-h1 {
-  font-weight: 200;
 }
 
 .material-icons.md-18 { font-size: 18px; }
@@ -51,13 +44,11 @@ h1 {
 }
 
 .z-music {
-  max-width: 570px;
+  max-width: 450px;
 }
 
 .z-nav {
-  width: 420px;
-  height: 80px;
-  border-radius: 40px;
+  width: 300px;
 }
 
 .active {
@@ -72,14 +63,10 @@ h1 {
   border-left: 3px solid white;
 }
 
-.z-scroll {
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-}
-
 .z-fullscreen {
   width: 100% !important;
-  height: 100vh !important;
+  min-height: 100vh !important;
+  height: -webkit-fill-available !important;
 }
 
 .z-video-hero {
@@ -99,15 +86,15 @@ h1 {
 
 .z-btn-def {
   width: 100%;
-  max-width: 250px;
+  max-width: 200px;
 	transition: 0.2s ease-out;
-  font-weight: 300;
+  font-weight: 350;
 }
 
 .z-btn-hero {
 	border-width: 3px !important;
-  font-weight: 400;
-  width: 380px;
+  font-weight: 500;
+  width: 300px;
 }
 
 .z-btn-nav {
@@ -142,7 +129,9 @@ h1 {
 }
 
 .z-logo {
-  width: 380px;
+  width: 300px;
+  margin-top: 32px;
+  margin-bottom: 4px;
 }
 
 .z-wide {
@@ -158,7 +147,7 @@ h1 {
 .z-members {
   object-fit: cover;
   width: 100vw;
-  height: calc(100vh - 150px);
+  height: calc(100vh - 120px);
   top: 0;
   left: 0;
 }
@@ -174,49 +163,50 @@ h1 {
 
 <body class="w3-black">
 
-<header id="home"class="w3-display-container z-fullscreen">
+<header id="home" class="w3-container z-fullscreen">
 	<video autoplay muted loop id="zajnal" class="z-video-hero">
 		<source src="assets/zajnal_hero.mp4" type="video/mp4">
 	</video>
-	<div class="w3-display-topmiddle w3-padding-64 w3-center" style="width: 450px">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.43 157.27" class="z-logo">
-        <defs>
-          <style>
+  <div class="w3-center">
+    <svg xmlns="http://www.w3.org/2000/svg" class="z-logo" width="500" height="110" viewBox="0 0 514.64 159.69">
+      <defs>
+        <style>
           .a {
             fill: #fff;
           }
-          </style>
-        </defs>
-        <title>⁯logo_thin</title>
-        <g>
-          <path class="a" d="M134.22,122.88a41.4,41.4,0,1,1,41.39-41.4A41.44,41.44,0,0,1,134.22,122.88Zm0-78.79a37.4,37.4,0,1,0,37.39,37.39A37.43,37.43,0,0,0,134.22,44.09Z"/>
-          <rect class="a" x="171.61" y="40.09" width="4" height="82.79"/>
-          <path class="a" d="M430.31,122.88a41.4,41.4,0,1,1,41.4-41.4A41.44,41.44,0,0,1,430.31,122.88Zm0-78.79a37.4,37.4,0,1,0,37.4,37.39A37.44,37.44,0,0,0,430.31,44.09Z"/>
-          <path class="a" d="M201.69,157.27h-2v-4h1a37.43,37.43,0,0,0,37.39-37.39V44.09H199.69v-4h43.39v75.79A41.44,41.44,0,0,1,201.69,157.27Z"/>
-          <path class="a" d="M362.45,122.88h-4V81.48a37.4,37.4,0,0,0-74.79,0h-4a41.4,41.4,0,0,1,82.79,0Z"/>
-          <rect class="a" x="279.66" y="40.09" width="4" height="82.79"/>
-          <polygon class="a" points="72.4 122.88 0 122.88 69.24 44.09 9.34 44.09 9.34 51.99 5.34 51.99 5.34 40.09 78.08 40.09 8.84 118.88 72.4 118.88 72.4 122.88"/>
-          <rect class="a" x="237.48" y="1.49" width="7.2" height="7.2" transform="translate(74.21 -168.98) rotate(45)"/>
-          <circle class="a" cx="134.22" cy="81.48" r="4.16"/>
-          <circle class="a" cx="430.31" cy="81.48" r="4.16"/>
-          <rect class="a" x="467.71" y="40.09" width="4" height="82.79"/>
-          <rect class="a" x="507.43" y="5.09" width="4" height="117.79"/>
-        </g>
-      </svg>
-		<a href="https://wmmd.lnk.to/Zajnal_Sotetkarma" target="_blank" class="w3-xlarge w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide z-btn z-btn-hero">SÖTÉTKAMRA</a>
-	</div>
+        </style>
+      </defs>
+      <title>⁯logo_hairline_mod</title>
+      <g>
+        <path class="a" d="M172.82,61.19a42.39,42.39,0,1,0,0,43.42v20.68h6V40.51h-6Zm-36.39,58.1A36.39,36.39,0,1,1,172.82,82.9,36.43,36.43,0,0,1,136.43,119.29Z"/>
+        <path class="a" d="M200.9,46.51h39.39v70.78a36.43,36.43,0,0,1-36.39,36.4h-3v6h3a42.44,42.44,0,0,0,42.39-42.4V40.51H200.9Z"/>
+        <path class="a" d="M323.26,40.51a42.4,42.4,0,0,0-36.39,20.68V40.51h-6v84.78h6V82.9a36.4,36.4,0,0,1,72.79,0v42.39h6V82.9A42.44,42.44,0,0,0,323.26,40.51Z"/>
+        <polygon class="a" points="6.55 40.51 6.55 54.4 12.55 54.4 12.55 46.51 69.24 46.51 0 125.29 75.61 125.29 75.61 119.29 13.26 119.29 82.5 40.51 6.55 40.51"/>
+        <rect class="a" x="238.69" y="1.91" width="9.2" height="9.2" transform="translate(66.66 173.94) rotate(-45)"/>
+        <circle class="a" cx="136.43" cy="82.9" r="5.16"/>
+        <circle class="a" cx="432.52" cy="82.9" r="5.16"/>
+        <path class="a" d="M468.92,61.19a42.39,42.39,0,1,0,0,43.42v20.68h6V40.51h-6Zm-36.4,58.1a36.39,36.39,0,1,1,36.4-36.39A36.43,36.43,0,0,1,432.52,119.29Z"/>
+        <rect class="a" x="508.64" y="5.51" width="6" height="119.79"/>
+      </g>
+    </svg>
+  </div>
+  <div class="w3-center">
+  	<a href="https://wmmd.lnk.to/Zajnal_Sotetkarma" target="_blank" class="w3-large w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide z-btn z-btn-hero">SÖTÉTKAMRA</a>
+  </div>
 </header>
 
 <section id="bio" class="w3-container w3-black w3-padding-32 z-fullscreen">
   <div class="w3-content z-bio">
-    <h1 class="w3-center z-wide">RÓLUNK<h1>
-    <div class="w3-xlarge">
+    <h3 class="w3-center z-wide">RÓLUNK<h3>
+    <div class="w3-large">
       <p>2015-ben indultunk furulya-citera duóként, öt éve működünk – cajonnal és basszusgitárral kiegészülve – zenekarként. Nem a népzene felől kanyarodunk a kortárs felé, és nem is viszont: úgy adódott, hogy népi és urbánus hatások mindig párhuzamosan voltak jelen az életünkben, így a produkciónk sem keresgélés, hanem lenyomat.</p>
+      <!--<img src="assets/bio/band_a.jpg" width="100%">-->
       <div class="w3-panel w3-black z-leftbar">
-        <p class="w3-xxlarge">
+        <p class="w3-xlarge">
         <i>&bdquo;...a produkciónk sem keresgélés, hanem lenyomat.&rdquo;</i></p>
       </div>
       <p>2019-ben jelent meg első kislemezünk, a Pusztafless, 2020-ban pedig bejutottunk a Szimpla Lemming programjába, ott voltunk a Veszprémi Utcazene Fesztiválon, majd az Öröm a zene tehetségkutatón az év felfedezettje díjat is megkaptuk.</p>
+      <!--<img src="assets/bio/band_b.jpg" width="100%">-->
       <p>Idén induló előadóként részt veszünk az NKA Hangfoglaló programjában, valamint a Kreatív Európa társfinanszírozásában megvalósuló, országhatárokon átívelő TREMOLO Projectben. Legújabb, Sötétkamra című kislemezünket október 14-én, az A38 hajón mutattuk be – az erről az anyagról singleként megjelent Csillagánizs című dalunk videoklipje pedig ott volt az idei Klipszemle versenyprogramjában is.</p>
     </div>
   <div class="w3-black z-placeholder"></div>
@@ -226,45 +216,45 @@ h1 {
 <section id="members" class="w3-display-container w3-black z-fullscreen">
 	<div class="w3-display-container w3-animate-opacity mySlides">
 		<img src="assets/members_wide/gabor.jpg" class="z-members">
-    <div class="w3-display-bottomright w3-container w3-xlarge" style="margin-bottom: 32px; margin-right: -16px;">
-      <div class="w3-black w3-padding-large z-leftbar w3-animate-right">
-        <p class="z-wide-lowercase w3-animate-zoom" style="margin-bottom: -24px; text-indent: 0;">furulya<p>
-        <p class="z-wide" style="font-weight: 400; text-indent: 0;">KOVÁCS GÁBOR<p>
+    <div class="w3-display-bottomright w3-large" style="margin-bottom: 32px;">
+      <div class="w3-padding z-leftbar w3-animate-right" style="background: rgba(0, 0, 0, 0.5);">
+        <p class="z-wide-lowercase w3-animate-opacity" style="margin-bottom: -16px; text-indent: 0;">furulya<p>
+        <p class="z-wide w3-animate-right" style="font-weight: 400; text-indent: 0;">KOVÁCS GÁBOR<p>
       </div>
 		</div>
 	</div>
 	<div class="w3-display-container w3-animate-opacity mySlides">
 		<img src="assets/members_wide/zsoca.jpg" class="z-members">
-      <div class="w3-display-bottomright w3-container w3-xlarge z-wide-lowercase"  style="margin-bottom: 32px; margin-right: -16px;">
-        <div class="w3-black w3-padding-large z-leftbar w3-animate-right">
-          <p class="z-wide-lowercase w3-animate-zoom" style="margin-bottom: -24px; text-indent: 0;">cajon<p>
-          <p class="z-wide" style="font-weight: 400; text-indent: 0;">MOLDVÁN ZSOLT<p>
+      <div class="w3-display-bottomright w3-large" style="margin-bottom: 32px;">
+        <div class="w3-padding z-leftbar w3-animate-right" style="background: rgba(0, 0, 0, 0.5);">
+          <p class="z-wide-lowercase w3-animate-opacity" style="margin-bottom: -12px; text-indent: 0;">cajon<p>
+          <p class="z-wide w3-animate-right" style="font-weight: 400; text-indent: 0;">MOLDVÁN ZSOLT<p>
         </div>
 			</div>
 	</div>
 	<div class="w3-display-container w3-animate-opacity mySlides">
 		<img src="assets/members_wide/srob.jpg" class="z-members">
-      <div class="w3-display-bottomright w3-container w3-xlarge z-wide-lowercase"  style="margin-bottom: 32px; margin-right: -16px;">
-        <div class="w3-black w3-padding-large z-leftbar w3-animate-right">
-          <p class="z-wide-lowercase w3-animate-zoom" style="margin-bottom: -24px; text-indent: 0;">basszusgitár<p>
-          <p class="z-wide" style="font-weight: 400; text-indent: 0;">SCHNEIDER RÓBERT<p>
+      <div class="w3-display-bottomright w3-large" style="margin-bottom: 32px;">
+        <div class="w3-padding z-leftbar w3-animate-right" style="background: rgba(0, 0, 0, 0.5);">
+          <p class="z-wide-lowercase w3-animate-opacity" style="margin-bottom: -12px; text-indent: 0;">basszusgitár<p>
+          <p class="z-wide w3-animate-right" style="font-weight: 400; text-indent: 0;">SCHNEIDER RÓBERT<p>
         </div>
 			</div>
 	</div>
-	<div class="w3-display-container w3-animate-opacity mySlides">
+  <div class="w3-display-container w3-animate-opacity mySlides">
 		<img src="assets/members_wide/boldi.jpg" class="z-members">
-      <div class="w3-display-bottomright w3-container w3-xlarge z-wide-lowercase" style="margin-bottom: 32px; margin-right: -16px;">
-        <div class="w3-black w3-padding-large z-leftbar w3-animate-right">
-          <p class="z-wide-lowercase w3-animate-zoom" style="margin-bottom: -24px; text-indent: 0;">citera<p>
-          <p class="z-wide" style="font-weight: 400; text-indent: 0;">TAMÁS BOLDIZSÁR<p>
+      <div class="w3-display-bottomright w3-large" style="margin-bottom: 32px;">
+        <div class="w3-padding z-leftbar w3-animate-right" style="background: rgba(0, 0, 0, 0.5);">
+          <p class="z-wide-lowercase w3-animate-opacity" style="margin-bottom: -12px; text-indent: 0;">citera<p>
+          <p class="z-wide w3-animate-right" style="font-weight: 400; text-indent: 0;">TAMÁS BOLDIZSÁR<p>
         </div>
 			</div>
 	</div>
-  	<div class="w3-display-container w3-text-white w3-center w3-display-left w3-border w3-border-white w3-hover-white w3-ripple z-btn z-btn-slide-left" onclick="plusDivs(-1)">
-      <span class="material-icons-outlined md-24 w3-display-middle">
-        arrow_back_ios
-      </span>
-    </div>
+	<div class="w3-display-container w3-text-white w3-center w3-display-left w3-border w3-border-white w3-hover-white w3-ripple z-btn z-btn-slide-left" onclick="plusDivs(-1)">
+    <span class="material-icons-outlined md-24 w3-display-middle">
+      arrow_back_ios
+    </span>
+  </div>
 	<div class="w3-display-container w3-text-white w3-center w3-display-right w3-border w3-border-white w3-hover-white w3-ripple z-btn z-btn-slide-right" onclick="plusDivs(1)">
     <span class="material-icons-outlined md-24 w3-display-middle">
       arrow_forward_ios
@@ -294,9 +284,9 @@ h1 {
 
 <section id="music" class="w3-container  w3-padding-32 z-fullscreen">
   <div class="w3-content w3-center z-music">
-    <h1 class="w3-center z-wide">ZENE<h1>
+    <h3 class="w3-center z-wide">ZENE<h3>
 
-    <div class="w3-row w3-xlarge" style="padding-top: 8px">
+    <div class="w3-row w3-large" style="padding-top: 8px">
     	<div id="sotetkamra" class="w3-half">
     	   <a href="https://open.spotify.com/album/3iOPd3yPBtG2YyS3ltQRSy" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-def">sötétkamra</a>
     	</div>
@@ -305,7 +295,7 @@ h1 {
     	</div>
   	</div>
 
-  	<div class="w3-cell-row w3-xlarge">
+  	<div class="w3-cell-row w3-large">
     	<div id="csillaganizs" class="w3-half">
     	   <a href="https://youtu.be/jk9oy0XXVuY" target="_blank" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-def">csillagánizs</a>
     	</div>
@@ -317,8 +307,8 @@ h1 {
 </section>
 
 <section id="contact" class="w3-container w3-black  w3-padding-32 z-fullscreen">
-	<h1 class="w3-center z-wide">KONTAKT<h1>
-	<div class="w3-content w3-center w3-xlarge w3-padding z-contact">
+	<h3 class="w3-center z-wide">KONTAKT<h3>
+	<div class="w3-content w3-center w3-large w3-padding z-contact">
     <a href="mailto:zajnalmusic@gmail.com" class="w3-margin w3-btn w3-border w3-border-white w3-hover-white w3-ripple z-wide-lowercase z-btn-contact z-btn-def">
 			e-mail
 		</a>
@@ -345,108 +335,77 @@ h1 {
 	<p>&#169; Zajnal 2021</p>
 </footer>
 
-<nav class="w3-display-container">
-  <div class="w3-content z-nav">
-    <div class="w3-bottom w3-padding-32">
-      <div class="w3-cell-row z-nav">
-        <div class="w3-container w3-cell w3-cell-middle w3-center z-btn-nav">
-        	<a href="#home">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-              <defs>
-                <style>
-                  .a {
-                    fill: #fff;
-                  }
-                </style>
-              </defs>
-              <title>⁯bio</title>
-              <g>
-                <path class="a" d="M24,3A21,21,0,1,1,3,24,21,21,0,0,1,24,3m0-3A24,24,0,1,0,48,24,24,24,0,0,0,24,0Z"/>
-                <polygon class="a" points="31 34 15.92 33.95 26 21 20 21 20 23 17 23 17 18 32 18 22 31 31 31 31 34"/>
-                <rect class="a" x="22.22" y="10.66" width="3.55" height="3.55" transform="translate(15.83 -13.33) rotate(45)"/>
-              </g>
-            </svg>
-          </a>
-        </div>
-        <div class="w3-container w3-cell w3-cell-middle w3-center z-btn-nav">
-        	<a href="#bio">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-              <defs>
-                <style>
-                  .a {
-                    fill: #fff;
-                  }
-                </style>
-              </defs>
-              <title>⁯RÓLUNK</title>
-              <g>
-                <path class="a" d="M24,3A21,21,0,1,1,3,24,21,21,0,0,1,24,3m0-3A24,24,0,1,0,48,24,24,24,0,0,0,24,0Z"/>
-                <rect class="a" x="14" y="26" width="21" height="3"/>
-                <rect class="a" x="14" y="19" width="19" height="3"/>
-                <rect class="a" x="14" y="12" width="22" height="3"/>
-                <rect class="a" x="14" y="33" width="13" height="3"/>
-              </g>
-            </svg>
-          </a>
-        </div>
-        <div class="w3-container w3-cell w3-cell-middle w3-center z-btn-nav">
-        	<a href="#members">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-              <defs>
-                <style>
-                  .a {
-                    fill: #fff;
-                  }
-                </style>
-              </defs>
-              <title>⁯TAGOK</title>
-              <g>
-                <path class="a" d="M24,3A21,21,0,1,1,3,24,21,21,0,0,1,24,3m0-3A24,24,0,1,0,48,24,24,24,0,0,0,24,0Z"/>
-                <path class="a" d="M24,11a5,5,0,1,1-5,5,5,5,0,0,1,5-5m0-3a8,8,0,1,0,8,8,8,8,0,0,0-8-8Z"/>
-                <path class="a" d="M38.12,40.67a14.51,14.51,0,0,0-28.24,0L7,40A17.51,17.51,0,0,1,41,40Z"/>
-              </g>
-            </svg>
-          </a>
-        </div>
-        <div class="w3-container w3-cell w3-cell-middle w3-center z-btn-nav">
-        	<a href="#music">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-              <defs>
-                <style>
-                  .a {
-                    fill: #fff;
-                  }
-                </style>
-              </defs>
-              <title>⁯ZENE</title>
-              <g>
-                <path class="a" d="M24,3A21,21,0,1,1,3,24,21,21,0,0,1,24,3m0-3A24,24,0,1,0,48,24,24,24,0,0,0,24,0Z"/>
-                <path class="a" d="M20,17.69l11,6.31L20,30.31V17.69M17,12.5v23L37,24,17,12.5Z"/>
-              </g>
-            </svg>
-          </a>
-        </div>
-        <div class="w3-container w3-cell w3-cell-middle w3-center z-btn-nav">
-        	<a href="#contact">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-              <defs>
-                <style>
-                  .a {
-                    fill: #fff;
-                  }
-                </style>
-              </defs>
-              <title>⁯KONTAKT</title>
-              <g>
-                <path class="a" d="M24,3a21,21,0,0,1,0,42H3V24A21,21,0,0,1,24,3m0-3A24,24,0,0,0,0,24V48H24A24,24,0,0,0,24,0Z"/>
-                <rect class="a" x="13" y="20" width="22" height="3"/>
-                <rect class="a" x="13" y="27" width="13" height="3"/>
-              </g>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
+<nav class="w3-bottom w3-padding-32" style="width: 100vw;">
+  <div class="w3-content w3-cell-row z-nav">
+  	<a href="#bio" class="w3-cell w3-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+        <defs>
+          <style>
+            .a {
+              fill: #fff;
+            }
+          </style>
+        </defs>
+        <title>⁯RÓLUNK</title>
+        <g>
+          <path class="a" d="M24,3A21,21,0,1,1,3,24,21,21,0,0,1,24,3m0-3A24,24,0,1,0,48,24,24,24,0,0,0,24,0Z"/>
+          <rect class="a" x="14" y="26" width="21" height="3"/>
+          <rect class="a" x="14" y="19" width="19" height="3"/>
+          <rect class="a" x="14" y="12" width="22" height="3"/>
+          <rect class="a" x="14" y="33" width="13" height="3"/>
+        </g>
+      </svg>
+    </a>
+  	<a href="#members" class="w3-cell w3-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+        <defs>
+          <style>
+            .a {
+              fill: #fff;
+            }
+          </style>
+        </defs>
+        <title>⁯TAGOK</title>
+        <g>
+          <path class="a" d="M24,3A21,21,0,1,1,3,24,21,21,0,0,1,24,3m0-3A24,24,0,1,0,48,24,24,24,0,0,0,24,0Z"/>
+          <path class="a" d="M24,11a5,5,0,1,1-5,5,5,5,0,0,1,5-5m0-3a8,8,0,1,0,8,8,8,8,0,0,0-8-8Z"/>
+          <path class="a" d="M38.12,40.67a14.51,14.51,0,0,0-28.24,0L7,40A17.51,17.51,0,0,1,41,40Z"/>
+        </g>
+      </svg>
+    </a>
+  	<a href="#music" class="w3-cell w3-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+        <defs>
+          <style>
+            .a {
+              fill: #fff;
+            }
+          </style>
+        </defs>
+        <title>⁯ZENE</title>
+        <g>
+          <path class="a" d="M24,3A21,21,0,1,1,3,24,21,21,0,0,1,24,3m0-3A24,24,0,1,0,48,24,24,24,0,0,0,24,0Z"/>
+          <path class="a" d="M20,17.69l11,6.31L20,30.31V17.69M17,12.5v23L37,24,17,12.5Z"/>
+        </g>
+      </svg>
+    </a>
+  	<a href="#contact" class="w3-cell w3-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+        <defs>
+          <style>
+            .a {
+              fill: #fff;
+            }
+          </style>
+        </defs>
+        <title>⁯KONTAKT</title>
+        <g>
+          <path class="a" d="M24,3a21,21,0,0,1,0,42H3V24A21,21,0,0,1,24,3m0-3A24,24,0,0,0,0,24V48H24A24,24,0,0,0,24,0Z"/>
+          <rect class="a" x="13" y="20" width="22" height="3"/>
+          <rect class="a" x="13" y="27" width="13" height="3"/>
+        </g>
+      </svg>
+    </a>
   </div>
 </nav>
 
