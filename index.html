@@ -18,17 +18,14 @@
 body,h1,h2,h3,h4,h5,h6 {
   font-family: Jost, sans-serif;
   font-weight: 300;
-  overflow-x: hidden;
-}
-
-h1,h2,h3,h4,h5,h6 {
-  margin-bottom: 12px !important;
-  margin-top: 12px !important;
+  /*overflow-x: hidden;*/
 }
 
 html {
   scroll-behavior: smooth;
 }
+
+/* Material icons */
 
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-24 { font-size: 24px; }
@@ -40,25 +37,7 @@ html {
 .material-icons-outlined.md-36 { font-size: 36px; }
 .material-icons-outlined.md-48 { font-size: 48px; }
 
-.z-bio {
-  max-width: 800px;
-}
-
-.z-music {
-  max-width: 450px;
-}
-
-.z-nav {
-  width: 300px;
-}
-
-.z-placeholder {
-  height: 128px;
-}
-
-.z-leftbar {
-  border-left: 3px solid white;
-}
+/* LAYOUT CSS */
 
 .z-fullscreen {
   width: 100% !important;
@@ -66,20 +45,35 @@ html {
   height: -webkit-fill-available !important;
 }
 
-.z-video-hero {
-  object-fit: cover;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
+.z-placeholder {height: 128px;}
+
+.z-bio {max-width: 800px;}
+
+.z-music {max-width: 450px;}
+
+.z-nav {width: 300px;}
+
+.z-contact {
+  max-width: 400px;
+  margin: auto;
 }
+
+.z-section-header {height: 128px; padding-top: 36px;}
+
+/* BUTTONS CSS */
 
 .z-btn {
 	transition: 0.2s ease-out;
   cursor: pointer;
   background-color: rgba(0,0,0,0) !important;
+}
+
+.z-btn-disabled {
+  cursor: default;
+  pointer-events: none;
+  color: #323232;
+  border-color: #323232 !important;
+  font-weight: 400;
 }
 
 .z-btn-def {
@@ -106,7 +100,6 @@ html {
   margin-bottom: 32px;
 }
 
-
 .z-btn-slide-left, .z-btn-slide-right {
   border-width: 3px !important;
   width: 48px;
@@ -121,17 +114,70 @@ html {
   text-indent: -1px;
 }
 
-
 .z-btn-slide-right {
   margin-right: -10px;
   text-indent: 1px;
 }
 
-
-.z-logo {
-  width: 300px;
-  margin-top: 64px;
+.z-btn-burger {
+  fill: #000;
+  fill-opacity: 0;
+  stroke: #fff;
 }
+
+.z-btn-nav {
+  fill: #000;
+  fill-opacity: 0;
+  stroke: #fff;
+  stroke-width: 1.5px;
+  stroke-miterlimit: 10;
+}
+
+.z-btn-lang {
+  padding: 8px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-indent: 0.1em;
+}
+
+.z-btn-lang.z-btn-disabled {
+  font-weight: 500;
+}
+
+@media (hover: hover) {
+
+  .z-btn:hover {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  .z-btn-nav:hover {
+    transition: 0.1s ease-in;
+    stroke-width: 3px;
+  }
+
+  .z-btn-burger:hover {
+    transition: 0.2s ease-out;
+    fill: white;
+    fill-opacity: 1;
+    stroke: black;
+  }
+
+  .z-btn-closenav:hover {
+    margin-bottom: 28px;
+  }
+
+  .z-btn-slide-left:hover {
+    margin-left: -14px;
+  }
+
+  .z-btn-slide-right:hover {
+    margin-right: -14px;
+  }
+
+}
+
+/* TEXT CSS */
 
 .z-wide {
 	letter-spacing: 0.7em;
@@ -143,23 +189,49 @@ html {
 	text-indent: 0.3em;
 }
 
-.z-members {
+/* HEADER CSS */
+
+.z-logo {
+  width: 300px;
+  margin-top: 64px;
+}
+
+.z-logo-svg{
+  fill: #fff;
+}
+
+.z-video-hero {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* BIO CSS */
+
+.z-leftbar {
+  border-left: 3px solid white;
+}
+
+/* MEMBERS CSS */
+
+.z-members-img {
   object-fit: cover;
   width: 100%;
-  height: calc(100vh - 364px);
+  height: calc(100vh - 384px);
 }
 
 .z-members-box {
   width: 100%;
-  height: 124px;
+  height: 128px;
   color: black;
   background-color: white;
 }
 
-.z-contact {
-  max-width: 500px;
-  margin: auto;
-}
+/* ANIMATIONS */
 
 .z-navanim-bio {
   position:relative;
@@ -246,72 +318,51 @@ html {
   to {opacity:1;}
 }
 
-.z-btn-nav {
-  fill: #000;
-  fill-opacity: 0;
-  stroke: #fff;
-  stroke-width: 1.5px;
-  stroke-miterlimit: 10;
-}
-
-.z-navanim-org, .z-navanim-lang {
+.z-navanim-shop, .z-navanim-org, .z-navanim-lang {
   animation-timing-function: ease-out;
   position: relative;
+  animation: zFullscreenMenu-bottom;
 }
 
-.z-navanim-org {
-  animation: org 0.4s;
-}
-
-@keyframes org {
+@keyframes zFullscreenMenu-bottom {
   from {bottom:-320px;opacity:0;}
   to {bottom:0;opacity:1;}
 }
 
-.z-navanim-lang {
-  animation: lang 0.45s;
+.z-navanim-shop {animation-duration: 0.4s;}
+.z-navanim-org {animation-duration: 0.45s;}
+.z-navanim-lang {animation-duration: 0.5s;}
+
+.z-memberanim-img {
+  animation: img 0.25s;
+  animation-timing-function: ease-out;
 }
 
-@keyframes lang {
-  from {bottom:-320px;opacity:0;}
-  to {bottom:0;opacity:1;}
+@keyframes img {
+  from {clip-path: inset(100% 0);}
+  to {clip-path: inset(0 0);}
 }
 
-@media (hover: hover) {
+.z-memberanim-box {
+  animation: box 0.5s;
+  animation-timing-function: ease-in;
+}
 
-  .z-btn:hover {
-    background-color: white !important;
-    color: black !important;
-  }
+@keyframes box {
+  from {opacity:0;clip-path: inset(0 100%);}
+  to {opacity:1;clip-path: inset(0 0);}
+}
 
-  .z-btn-nav:hover {
-    transition: 0.1s ease-in;
-    stroke-width: 3px;
-    /*fill: white;
-    fill-opacity: 1;
-    stroke: black;
-    transform: translateY(-2px);*/
-  }
+.reveal{
+  position: relative;
+  transform: translateY(128px);
+  opacity: 0;
+  transition: 0.5s all ease;
+}
 
-  .z-btn-burger:hover {
-    transition: 0.2s ease-out;
-    fill: white;
-    fill-opacity: 1;
-    stroke: black;
-  }
-
-  .z-btn-closenav:hover {
-    margin-bottom: 28px;
-  }
-
-  .z-btn-slide-left:hover {
-    margin-left: -14px;
-  }
-
-  .z-btn-slide-right:hover {
-    margin-right: -14px;
-  }
-
+.reveal.active{
+  transform: translateY(0);
+  opacity: 1;
 }
 
 </style>
@@ -326,33 +377,29 @@ html {
 	</video>
   <div class="w3-display-topmiddle">
     <svg xmlns="http://www.w3.org/2000/svg" class="z-logo" width="500" height="110" viewBox="0 0 514.64 159.69">
-      <defs>
-        <style>
-          .a {
-            fill: #fff;
-          }
-        </style>
-      </defs>
-      <title>⁯logo_hairline_mod</title>
-      <g>
-        <path class="a" d="M172.82,61.19a42.39,42.39,0,1,0,0,43.42v20.68h6V40.51h-6Zm-36.39,58.1A36.39,36.39,0,1,1,172.82,82.9,36.43,36.43,0,0,1,136.43,119.29Z"/>
-        <path class="a" d="M200.9,46.51h39.39v70.78a36.43,36.43,0,0,1-36.39,36.4h-3v6h3a42.44,42.44,0,0,0,42.39-42.4V40.51H200.9Z"/>
-        <path class="a" d="M323.26,40.51a42.4,42.4,0,0,0-36.39,20.68V40.51h-6v84.78h6V82.9a36.4,36.4,0,0,1,72.79,0v42.39h6V82.9A42.44,42.44,0,0,0,323.26,40.51Z"/>
-        <polygon class="a" points="6.55 40.51 6.55 54.4 12.55 54.4 12.55 46.51 69.24 46.51 0 125.29 75.61 125.29 75.61 119.29 13.26 119.29 82.5 40.51 6.55 40.51"/>
-        <rect class="a" x="238.69" y="1.91" width="9.2" height="9.2" transform="translate(66.66 173.94) rotate(-45)"/>
-        <circle class="a" cx="136.43" cy="82.9" r="5.16"/>
-        <circle class="a" cx="432.52" cy="82.9" r="5.16"/>
-        <path class="a" d="M468.92,61.19a42.39,42.39,0,1,0,0,43.42v20.68h6V40.51h-6Zm-36.4,58.1a36.39,36.39,0,1,1,36.4-36.39A36.43,36.43,0,0,1,432.52,119.29Z"/>
-        <rect class="a" x="508.64" y="5.51" width="6" height="119.79"/>
+      <title>⁯Zajnal</title>
+      <g class="z-logo-svg">
+        <path  d="M172.82,61.19a42.39,42.39,0,1,0,0,43.42v20.68h6V40.51h-6Zm-36.39,58.1A36.39,36.39,0,1,1,172.82,82.9,36.43,36.43,0,0,1,136.43,119.29Z"/>
+        <path d="M200.9,46.51h39.39v70.78a36.43,36.43,0,0,1-36.39,36.4h-3v6h3a42.44,42.44,0,0,0,42.39-42.4V40.51H200.9Z"/>
+        <path d="M323.26,40.51a42.4,42.4,0,0,0-36.39,20.68V40.51h-6v84.78h6V82.9a36.4,36.4,0,0,1,72.79,0v42.39h6V82.9A42.44,42.44,0,0,0,323.26,40.51Z"/>
+        <polygon points="6.55 40.51 6.55 54.4 12.55 54.4 12.55 46.51 69.24 46.51 0 125.29 75.61 125.29 75.61 119.29 13.26 119.29 82.5 40.51 6.55 40.51"/>
+        <rect x="238.69" y="1.91" width="9.2" height="9.2" transform="translate(66.66 173.94) rotate(-45)"/>
+        <circle cx="136.43" cy="82.9" r="5.16"/>
+        <circle cx="432.52" cy="82.9" r="5.16"/>
+        <path d="M468.92,61.19a42.39,42.39,0,1,0,0,43.42v20.68h6V40.51h-6Zm-36.4,58.1a36.39,36.39,0,1,1,36.4-36.39A36.43,36.43,0,0,1,432.52,119.29Z"/>
+        <rect x="508.64" y="5.51" width="6" height="119.79"/>
       </g>
     </svg>
   </div>
 </header>
 
 <div class="w3-black z-placeholder"></div>
-<section id="bio" class="w3-container w3-black w3-padding-32">
-  <div class="w3-content z-bio">
-    <h3 class="w3-center z-wide">RÓLUNK<h3>
+
+<section id="bio" class="w3-container w3-black z-fullscreen">
+  <div class="w3-content z-bio reveal">
+    <div class="z-section-header">
+      <h3 class="w3-center z-wide">RÓLUNK<h3>
+    </div>
     <div class="w3-large">
       <p>2015-ben indultunk furulya-citera duóként, öt éve működünk – cajonnal és basszusgitárral kiegészülve – zenekarként. Nem a népzene felől kanyarodunk a kortárs felé, és nem is viszont: úgy adódott, hogy népi és urbánus hatások mindig párhuzamosan voltak jelen az életünkben, így a produkciónk sem keresgélés, hanem lenyomat.</p>
       <!--<img src="assets/bio/band_a.jpg" width="100%">-->
@@ -367,85 +414,90 @@ html {
   <!--<div class="w3-black z-placeholder"></div>-->
   </div>
 </section>
-<section id="members" class="w3-black z-fullscreen">
-  <div class="w3-display-container w3-content w3-padding-32" style="max-width:800px;">
-  <h3 class="w3-center z-wide" style="padding-bottom: 24px;">TAGOK<h3>
-	<div class="w3-display-container w3-animate-opacity mySlides">
-		<a href="#members"><img src="assets/members_wide/gabor.jpg" class="z-members"></a>
-    <div class="w3-medium w3-center w3-display-container z-members-box">
-      <div class="w3-display-middle" style="width:100%">
-        <p class="z-wide-lowercase" style="margin-bottom: -16px;">furulya<p>
-        <p class="z-wide">KOVÁCS GÁBOR<p>
-      </div>
-		</div>
-	</div>
-	<div class="w3-display-container w3-animate-opacity mySlides">
-		<a href="#members"><img src="assets/members_wide/zsoca.jpg" class="z-members"></a>
-    <div class="w3-medium w3-center w3-display-container z-members-box">
-      <div class="w3-display-middle" style="width:100%">
-          <p class="z-wide-lowercase" style="margin-bottom: -16px;">cajon<p>
-          <p class="z-wide">MOLDVÁN ZSOLT<p>
-        </div>
-			</div>
-	</div>
-	<div class="w3-display-container w3-animate-opacity mySlides">
-		<a href="#members"><img src="assets/members_wide/srob.jpg" class="z-members"></a>
-    <div class="w3-medium w3-center w3-display-container z-members-box">
-      <div class="w3-display-middle" style="width:100%">
-          <p class="z-wide-lowercase" style="margin-bottom: -16px;">basszusgitár<p>
-          <p class="z-wide">SCHNEIDER RÓBERT<p>
-        </div>
-			</div>
-	</div>
-  <div class="w3-display-container w3-animate-opacity mySlides">
-		<a href="#members"><img src="assets/members_wide/boldi.jpg" class="z-members"></a>
-    <div class="w3-medium w3-center w3-display-container z-members-box">
-      <div class="w3-display-middle" style="width:100%">
-          <p class="z-wide-lowercase" style="margin-bottom: -16px;">citera<p>
-          <p class="z-wide">TAMÁS BOLDIZSÁR<p>
-        </div>
-			</div>
-	</div>
-  <div class="w3-text-white w3-display-left w3-border w3-border-white w3-ripple z-btn z-btn-slide-left" onclick="plusDivs(-1)">
-    <span class="material-icons-outlined md-24">
-      arrow_back_ios
-    </span>
-  </div>
-	<div class="w3-text-white w3-display-right w3-border w3-border-white w3-ripple z-btn z-btn-slide-right" onclick="plusDivs(1)">
-    <span class="material-icons-outlined md-24">
-      arrow_forward_ios
-    </span>
-  </div>
-	<script>
-		var slideIndex = 1;
-		showDivs(slideIndex);
 
-		function plusDivs(n) {
-			showDivs(slideIndex += n);
-		}
+<section id="members" class="w3-container w3-black">
+  <div class="w3-display-container w3-content reveal" style="max-width:800px;">
+    <div class="z-section-header">
+      <h3 class="w3-center z-wide">TAGOK<h3>
+    </div>
+  	<div class="mySlides">
+  		<img src="assets/members_wide/gabor.jpg" class="z-members-img z-memberanim-img">
+      <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
+        <div class="w3-display-middle" style="width:100%">
+          <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">furulya<p>
+          <p class="z-wide z-memberanim-name">KOVÁCS GÁBOR<p>
+        </div>
+  		</div>
+  	</div>
+  	<div class="mySlides">
+  		<img src="assets/members_wide/zsoca.jpg" class="z-members-img z-memberanim-img">
+      <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
+        <div class="w3-display-middle" style="width:100%">
+            <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">cajon<p>
+            <p class="z-wide z-memberanim-name">MOLDVÁN ZSOLT<p>
+          </div>
+  			</div>
+  	</div>
+  	<div class="mySlides">
+  		<img src="assets/members_wide/srob.jpg" class="z-members-img z-memberanim-img">
+      <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
+        <div class="w3-display-middle" style="width:100%">
+            <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">basszusgitár<p>
+            <p class="z-wide z-memberanim-name">SCHNEIDER RÓBERT<p>
+          </div>
+  			</div>
+  	</div>
+    <div class="mySlides">
+  		<img src="assets/members_wide/boldi.jpg" class="z-members-img z-memberanim-img">
+      <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
+        <div class="w3-display-middle" style="width:100%">
+            <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">citera<p>
+            <p class="z-wide z-memberanim-name">TAMÁS BOLDIZSÁR<p>
+          </div>
+  			</div>
+  	</div>
+    <div class="w3-text-white w3-display-left w3-border w3-border-white w3-ripple z-btn z-btn-slide-left" onclick="plusDivs(-1)">
+      <span class="material-icons-outlined md-24" style="margin-top:3px;">
+        arrow_back_ios
+      </span>
+    </div>
+  	<div class="w3-text-white w3-display-right w3-border w3-border-white w3-ripple z-btn z-btn-slide-right" onclick="plusDivs(1)">
+      <span class="material-icons-outlined md-24" style="margin-top:3px;">
+        arrow_forward_ios
+      </span>
+    </div>
+  	<script>
+  		var slideIndex = 1;
+  		showDivs(slideIndex);
 
-		function showDivs(n) {
-			var i;
-			var x = document.getElementsByClassName("mySlides");
-			if (n > x.length) {slideIndex = 1}
-			if (n < 1) {slideIndex = x.length}
-			for (i = 0; i < x.length; i++) {
-				x[i].style.display = "none";
-			}
-			x[slideIndex-1].style.display = "block";
-		}
-	</script>
-</div>
+  		function plusDivs(n) {
+  			showDivs(slideIndex += n);
+  		}
+
+  		function showDivs(n) {
+  			var i;
+  			var x = document.getElementsByClassName("mySlides");
+  			if (n > x.length) {slideIndex = 1}
+  			if (n < 1) {slideIndex = x.length}
+  			for (i = 0; i < x.length; i++) {
+  				x[i].style.display = "none";
+  			}
+  			x[slideIndex-1].style.display = "block";
+  		}
+  	</script>
+  </div>
 </section>
 <div class="w3-black z-placeholder"></div>
+
 <div class="w3-black z-placeholder"></div>
 
-<section id="music" class="w3-container w3-padding-32 z-fullscreen">
-  <div class="w3-container w3-center" style="width: 100%;">
-  <div class="w3-content w3-center z-music">
-    <h3 class="w3-center z-wide">ZENE<h3>
+<section id="music" class="w3-container z-fullscreen">
+  <div class="w3-content w3-center z-music reveal">
+    <div class="z-section-header">
+      <h3 class="w3-center z-wide">ZENE<h3>
+    </div>
 
-    <div class="w3-row w3-large" style="padding-top: 8px">
+    <div class="w3-cell-row w3-large">
     	<div id="sotetkamra" class="w3-half">
     	   <a href="https://open.spotify.com/album/3iOPd3yPBtG2YyS3ltQRSy" target="_blank" class="w3-margin w3-button w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">sötétkamra</a>
     	</div>
@@ -463,14 +515,16 @@ html {
     	</div>
     </div>
   </div>
-</div>
 </section>
 
 <div class="w3-black z-placeholder"></div>
-<section id="contact" class="w3-container w3-black  w3-padding-32 z-fullscreen">
-	<h3 class="w3-center z-wide">KONTAKT<h3>
-	<div class="w3-content w3-center w3-large w3-padding z-contact">
-    <a href="mailto:zajnalmusic@gmail.com" class="w3-margin w3-button w3-border w3-border-white  w3-ripple z-wide-lowercase z-btn z-btn-def">
+
+<section id="contact" class="w3-container w3-black z-fullscreen">
+	<div class="w3-content w3-center w3-large z-contact reveal">
+    <div class="z-section-header">
+      <h3 class="w3-center z-wide">KONTAKT<h3>
+    </div>
+    <a href="mailto:zajnalmusic@gmail.com" class="w3-margin w3-button w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">
 			e-mail
 		</a>
 		<a href="https://www.instagram.com/zajnalmusic/" target="_blank" class="w3-margin w3-button w3-border w3-border-white  w3-ripple z-wide-lowercase z-btn z-btn-def">
@@ -491,40 +545,37 @@ html {
 	</div>
 </section>
 
-<footer class="w3-container w3-black w3-center z-wide-lowercase" style="height: 155px; text-indent: 0.6em;">
+<footer class="w3-container w3-black w3-center z-wide-lowercase" style="height: 170px; text-indent: 0.6em;">
 	<p>&#169; Zajnal 2021</p>
 </footer>
 
 <nav>
-  <div id="zMenuClose" class="w3-top w3-large w3-display-container w3-black z-navanim-menuclose" style="width: 100vw; height: calc(100vh - 124px); display: none;" onclick="close_zMenu();">
-    <div class="w3-center" style="margin-top:64px;">
-      <a href="" class="z-navanim-org w3-margin w3-button w3-border w3-border-white  w3-ripple z-wide-lowercase z-btn z-btn-navpanel">
-  			szervezőknek
+  <div id="zFullscreenMenu" class="w3-top w3-large w3-display-container w3-black z-navanim-menuclose w3-padding-32" style="width: 100vw; height: calc(100% - 128px); display: none;">
+    <div class="w3-center">
+      <a href="" class="z-btn-disabled z-navanim-shop w3-margin w3-button w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-navpanel">
+  			shop
   		</a>
     </div>
     <div class="w3-center">
-      <a href="" class="z-navanim-lang w3-margin w3-button w3-border w3-border-white  w3-ripple z-wide-lowercase z-btn z-btn-navpanel">
-        english
+      <a href="" class="z-navanim-org w3-margin w3-button w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-navpanel">
+        szervezőknek
       </a>
     </div>
-    <button class="w3-display-bottommiddle w3-display-container w3-button w3-text-white w3-border w3-border-white  w3-ripple z-btn z-btn-closenav z-navanim-close">
+    <br>
+    <div class="w3-center">
+      <a href="" class="z-btn-disabled z-navanim-lang w3-margin w3-button w3-border w3-border-white w3-ripple z-btn w3-small z-btn-lang">
+        EN
+      </a>
+    </div>
+    <button class="w3-display-bottommiddle w3-display-container w3-button w3-border w3-border-white w3-ripple z-btn z-btn-closenav z-navanim-close" onclick="close_zMenu();">
       <span class="material-icons-outlined md-24 w3-display-middle">keyboard_arrow_down</span>
     </button>
   </div>
-  <div id="zMenuBg" class="w3-bottom w3-center z-navanim-bg" style="width: 100vw; height: 124px; padding-bottom: 24px; display: none;"></div>
-  <div id="zBurger" class="w3-bottom" style="width: 100vw; padding-bottom: 24px;">
+  <div id="zNavbarbarBg" class="w3-bottom w3-center z-navanim-bg" style="width: 100vw; height: 128px; display: none;"></div>
+  <div id="zBurger" class="w3-bottom" style="width: 100vw; height: 128px; padding-top: 40px;">
     <div class="w3-center">
-      <button class="w3-button w3-hover-none z-navanim-hamburger" onclick="open_zMenu();">
+      <button class="w3-button w3-hover-none z-navanim-hamburger" style="padding:0;" onclick="open_zMenu();">
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-          <defs>
-            <style>
-          	  .z-btn-burger {
-            		fill: #000;
-            		fill-opacity: 0;
-            		stroke: #fff;
-          	  }
-            </style>
-          </defs>
           <title>⁯Menü</title>
           <g class="z-btn-burger">
         	<circle cx="24" cy="24" r="22.5" stroke-width="3px" stroke-miterlimit="10"/>
@@ -537,10 +588,10 @@ html {
       </button>
     </div>
   </div>
-  <div id="zMenu" class="w3-bottom w3-padding-32" style="width: 100vw; display: none;">
+  <div id="zNavbarbar" class="w3-bottom" style="width: 100%; height: 128px; padding-top: 40px; display: none;">
     <div class="w3-content w3-cell-row z-nav">
     	<a href="#bio" class="w3-cell w3-center z-navanim-bio" onclick="close_zMenu();">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="52" viewBox="0 0 52 48">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
           <title>⁯Rólunk</title>
           <g class="z-btn-nav">
             <circle cx="24" cy="24" r="22.5" />
@@ -553,7 +604,7 @@ html {
         </svg>
       </a>
     	<a href="#members" class="w3-cell w3-center z-navanim-members" onclick="close_zMenu();">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="52" viewBox="0 0 52 48">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
           <title>Tagok</title>
           <g class="z-btn-nav">
           	<circle cx="24" cy="24" r="22.5"/>
@@ -564,7 +615,7 @@ html {
         </svg>
       </a>
     	<a href="#music" class="w3-cell w3-center z-navanim-music" onclick="close_zMenu();">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="52" viewBox="0 0 52 48">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
           <title>Zene</title>
           <g class="z-btn-nav">
           	<circle cx="24" cy="24" r="22.5" />
@@ -574,7 +625,7 @@ html {
         </svg>
       </a>
     	<a href="#contact" class="w3-cell w3-center z-navanim-contact" onclick="close_zMenu();">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="52" viewBox="0 0 52 48">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
           <title>⁯Kontakt</title>
           <g class="z-btn-nav">
             <path d="M24,46.5H1.5V24A22.5,22.5,0,1,1,24,46.5Z"/>
@@ -590,21 +641,40 @@ html {
 
 <script>
   function open_zMenu() {
-    document.getElementById("zMenu").style.display = "block";
-    document.getElementById("zMenuClose").style.display = "block";
-    document.getElementById("zMenuBg").style.display = "block";
+    document.getElementById("zNavbarbar").style.display = "block";
+    document.getElementById("zFullscreenMenu").style.display = "block";
+    document.getElementById("zNavbarbarBg").style.display = "block";
     document.getElementById("zBurger").style.display = "none";
-    document.getElementById("zMenuBg").style.backgroundColor = "black";
+    document.getElementById("zNavbarbarBg").style.backgroundColor = "black";
   }
 
   function close_zMenu() {
-    document.getElementById("zMenu").style.display = "none";
-    document.getElementById("zMenuClose").style.display = "none";
-    document.getElementById("zMenuBg").style.display = "none";
+    document.getElementById("zNavbarbar").style.display = "none";
+    document.getElementById("zFullscreenMenu").style.display = "none";
+    document.getElementById("zNavbarbarBg").style.display = "none";
     document.getElementById("zBurger").style.display = "block";
   }
 
 
+</script>
+<script>
+  function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      var elementVisible = 150;
+
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add("active");
+      } else {
+        reveals[i].classList.remove("active");
+      }
+    }
+  }
+
+  window.addEventListener("scroll", reveal);
 </script>
 
 </body>
