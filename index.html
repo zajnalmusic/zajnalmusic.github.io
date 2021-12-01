@@ -71,12 +71,19 @@ html {
 
 .z-btn {
 	transition: 0.2s ease-out;
-  cursor: pointer;
   background-color: rgba(0,0,0,0) !important;
+  vertical-align:middle;
+  overflow:hidden;
+  text-decoration:none;
+  color:inherit;
+  background-color:inherit;
+  text-align:center;
+  cursor:pointer;
+  white-space:nowrap;
+  display: inline-block;
 }
 
 .z-btn-disabled {
-  cursor: default;
   pointer-events: none;
   color: #323232;
   border-color: #323232 !important;
@@ -84,9 +91,9 @@ html {
 }
 
 .z-btn-def {
-  width: 100%;
   width: 200px;
   font-weight: 350;
+  padding: 8px;
 }
 
 .z-btn-navpanel {
@@ -108,21 +115,21 @@ html {
 }
 
 .z-btn-slide-left, .z-btn-slide-right {
-  border-width: 3px !important;
   width: 48px;
-  height: 48px;
-  border-radius: 24px;
+  height: 64px;
   text-align: center;
-  padding-top: 6px;
+  padding-top: 20px;
+  transition: 0.2s ease-out;
+  cursor: pointer;
 }
 
 .z-btn-slide-left {
-  margin-left: -10px;
+  margin-left: 0px;
   text-indent: -1px;
 }
 
 .z-btn-slide-right {
-  margin-right: -10px;
+  margin-right: 0px;
   text-indent: 1px;
 }
 
@@ -130,6 +137,15 @@ html {
   fill: #000;
   fill-opacity: 0;
   stroke: #fff;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  border: 3px solid white;
+  text-align: center;
+  padding-top: 20px;
+  transition: 0.2s ease-out;
+  display: inline-block;
+  padding: 8px 16px;
 }
 
 .z-btn-nav {
@@ -175,11 +191,13 @@ html {
   }
 
   .z-btn-slide-left:hover {
-    margin-left: -14px;
+    margin-left: -8px;
+    width: 56px;
   }
 
   .z-btn-slide-right:hover {
-    margin-right: -14px;
+    margin-right: -8px;
+    width: 56px;
   }
 
 }
@@ -345,19 +363,20 @@ html {
 .z-memberanim-img {
   animation: img 0.5s;
   animation-timing-function: ease-in;
+  position: relative;
 }
 
 @keyframes img {
-  from {clip-path: inset(100% 0);}
-  to {clip-path: inset(0 0);}
+  from {bottom: 0px; opacity: 0; clip-path: inset(100% 0);}
+  to {bottom: 0px; opacity: 1; clip-path: inset(0 0);}
 }
 
-.z-memberanim-box {
+/* .z-memberanim-box {
   animation: box 0.5s;
   animation-delay: 0.4s;
   animation-timing-function: ease-out;
   animation-fill-mode: both;
-}
+}*/
 
 @keyframes box {
   from {opacity:0;clip-path: inset(0 100%);}
@@ -367,7 +386,7 @@ html {
 .z-memberanim-instrument, .z-memberanim-name {
   opacity: 0;
   animation: fade 0.25s;
-  animation-delay: 1s;
+  animation-delay: 0.5s;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
 }
@@ -396,7 +415,7 @@ html {
 <body class="w3-black">
 
 <header id="home" class="w3-display-container z-fullscreen">
-	<video autoplay muted loop id="zajnal" class="z-video-hero">
+	<video autoplay muted loop poster="assets/zajnal_hero.jpg" id="zajnal" class="z-video-hero">
 		<source src="assets/zajnal_hero.mp4" type="video/mp4">
 	</video>
   <div class="w3-display-topmiddle">
@@ -425,7 +444,7 @@ html {
       <h3 class="w3-center z-wide">RÓLUNK<h3>
     </div>
     <div class="w3-large">
-      <p>2015-ben indultunk furulya-citera duóként, öt éve működünk – cajonnal és basszusgitárral kiegészülve – zenekarként. Nem a népzene felől kanyarodunk a kortárs felé, és nem is viszont: úgy adódott, hogy népi és urbánus hatások mindig párhuzamosan voltak jelen az életünkben, így a produkciónk sem keresgélés, hanem lenyomat.</p>
+      <p style="margin-top:-8px;">2015-ben indultunk furulya-citera duóként, öt éve működünk – cajonnal és basszusgitárral kiegészülve – zenekarként. Nem a népzene felől kanyarodunk a kortárs felé, és nem is viszont: úgy adódott, hogy népi és urbánus hatások mindig párhuzamosan voltak jelen az életünkben, így a produkciónk sem keresgélés, hanem lenyomat.</p>
       <!--<img src="assets/bio/band_a.jpg" width="100%">-->
       <div class="w3-panel w3-black z-leftbar">
         <p class="w3-xlarge">
@@ -447,7 +466,7 @@ html {
   	<div class="mySlides">
   		<img src="assets/members_wide/gabor.jpg" class="z-members-img z-memberanim-img">
       <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
-        <div class="w3-display-middle" style="width:100%">
+        <div class="w3-display-middle" style="width: calc(100% - 96px);">
           <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">furulya<p>
           <p class="z-wide z-memberanim-name">KOVÁCS GÁBOR<p>
         </div>
@@ -456,7 +475,7 @@ html {
   	<div class="mySlides">
   		<img src="assets/members_wide/zsoca.jpg" class="z-members-img z-memberanim-img">
       <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
-        <div class="w3-display-middle" style="width:100%">
+        <div class="w3-display-middle" style="width: calc(100% - 96px);">
             <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">cajon<p>
             <p class="z-wide z-memberanim-name">MOLDVÁN ZSOLT<p>
           </div>
@@ -465,7 +484,7 @@ html {
   	<div class="mySlides">
   		<img src="assets/members_wide/srob.jpg" class="z-members-img z-memberanim-img">
       <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
-        <div class="w3-display-middle" style="width:100%">
+        <div class="w3-display-middle" style="width: calc(100% - 96px);">
             <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">basszusgitár<p>
             <p class="z-wide z-memberanim-name">SCHNEIDER RÓBERT<p>
           </div>
@@ -474,22 +493,23 @@ html {
     <div class="mySlides">
   		<img src="assets/members_wide/boldi.jpg" class="z-members-img z-memberanim-img">
       <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
-        <div class="w3-display-middle" style="width:100%">
+        <div class="w3-display-middle" style="width: calc(100% - 96px);">
             <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">citera<p>
             <p class="z-wide z-memberanim-name">TAMÁS BOLDIZSÁR<p>
           </div>
   			</div>
   	</div>
-    <div class="w3-text-white w3-display-left w3-border w3-border-white w3-ripple z-btn z-btn-slide-left" onclick="plusDivs(-1)">
-      <span class="material-icons-outlined md-24" style="margin-top:3px;">
+    <div class="w3-text-black w3-white w3-display-bottomleft z-btn-slide-left" onclick="plusDivs(-1)">
+      <span class="material-icons-outlined md-18" style="margin-top:3px;">
         arrow_back_ios
       </span>
     </div>
-  	<div class="w3-text-white w3-display-right w3-border w3-border-white w3-ripple z-btn z-btn-slide-right" onclick="plusDivs(1)">
-      <span class="material-icons-outlined md-24" style="margin-top:3px;">
+  	<div class="w3-text-black w3-white w3-display-bottomright z-btn-slide-right" onclick="plusDivs(1)">
+      <span class="material-icons-outlined md-18" style="margin-top:3px;">
         arrow_forward_ios
       </span>
     </div>
+
   	<script>
   		var slideIndex = 1;
   		showDivs(slideIndex);
@@ -523,19 +543,19 @@ html {
 
     <div class="w3-cell-row w3-large">
     	<div id="sotetkamra" class="w3-half">
-    	   <a href="https://open.spotify.com/album/3iOPd3yPBtG2YyS3ltQRSy" target="_blank" class="w3-margin w3-button w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">sötétkamra</a>
+    	   <a href="https://open.spotify.com/album/3iOPd3yPBtG2YyS3ltQRSy" target="_blank" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">sötétkamra</a>
     	</div>
     	<div id="vakfolt" class="w3-half">
-    	   <a href="https://youtu.be/SoqpvfHThXU" target="_blank" class="w3-margin w3-button w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">vakfolt</a>
+    	   <a href="https://youtu.be/SoqpvfHThXU" target="_blank" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">vakfolt</a>
     	</div>
   	</div>
 
   	<div class="w3-cell-row w3-large">
     	<div id="csillaganizs" class="w3-half">
-    	   <a href="https://youtu.be/jk9oy0XXVuY" target="_blank" class="w3-margin w3-button w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">csillagánizs</a>
+    	   <a href="https://youtu.be/jk9oy0XXVuY" target="_blank" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">csillagánizs</a>
     	</div>
     	<div id="komlo" class="w3-half">
-    	   <a href="https://www.youtube.com/watch?v=2qkPaPY1UXA" target="_blank" class="w3-margin w3-button w3-border w3-border-white  w3-ripple z-wide-lowercase z-btn z-btn-def">komló</a>
+    	   <a href="https://www.youtube.com/watch?v=2qkPaPY1UXA" target="_blank" class="w3-margin w3-border w3-border-white  w3-ripple z-wide-lowercase z-btn z-btn-def">komló</a>
     	</div>
     </div>
   </div>
@@ -548,22 +568,22 @@ html {
     <div class="z-section-header">
       <h3 class="w3-center z-wide">KONTAKT<h3>
     </div>
-    <a href="mailto:zajnalmusic@gmail.com" class="w3-margin w3-button w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">
+    <a href="mailto:zajnalmusic@gmail.com" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">
 			e-mail
 		</a>
-		<a href="https://www.instagram.com/zajnalmusic/" target="_blank" class="w3-margin w3-button w3-border w3-border-white  w3-ripple z-wide-lowercase z-btn z-btn-def">
+		<a href="https://www.instagram.com/zajnalmusic/" target="_blank" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">
 			instagram
 		</a>
-		<a href="https://www.facebook.com/zajnalmusic/" target="_blank" class="w3-margin w3-button w3-border w3-border-white  w3-ripple z-wide-lowercase z-btn z-btn-def">
+		<a href="https://www.facebook.com/zajnalmusic/" target="_blank" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">
 			facebook
 		</a>
-		<a href="https://www.youtube.com/zajnalmusic/" target="_blank" class="w3-margin w3-button w3-border w3-border-white  w3-ripple z-wide-lowercase z-btn z-btn-def">
+		<a href="https://www.youtube.com/zajnalmusic/" target="_blank" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">
 			youtube
 		</a>
-		<a href="https://open.spotify.com/artist/0fPavCFAklDixqi98zT05V/" target="_blank" class="w3-margin w3-button w3-border w3-border-white  w3-ripple z-wide-lowercase z-btn z-btn-def">
+		<a href="https://open.spotify.com/artist/0fPavCFAklDixqi98zT05V/" target="_blank" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">
 			spotify
 		</a>
-		<a href="https://soundcloud.com/zajnalmusic/" target="_blank" class="w3-margin w3-button w3-border w3-border-white  w3-ripple z-wide-lowercase z-btn z-btn-def">
+		<a href="https://soundcloud.com/zajnalmusic/" target="_blank" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">
 			soundcloud
 		</a>
 	</div>
@@ -598,12 +618,10 @@ html {
   <div id="zNavbarbarBg" class="w3-bottom w3-center z-navanim-bg" style="width: 100vw; height: 128px; display: none;"></div>
   <div id="zBurger" class="w3-bottom" style="width: 100vw; height: 128px; padding-top: 40px;">
     <div class="w3-center">
-      <button class="w3-button w3-hover-none z-navanim-hamburger" style="padding:0;" onclick="open_zMenu();">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+      <button class="z-btn z-btn-burger" style="padding:0;" onclick="open_zMenu();">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" style="margin-left:-3px; margin-top:-3px;">
           <title>⁯Menü</title>
-          <g class="z-btn-burger">
-        	<circle cx="24" cy="24" r="22.5" stroke-width="3px" stroke-miterlimit="10"/>
-        	<circle cx="24" cy="24" r="24" stroke-opacity="0"/>
+          <g>
             <line x1="13" y1="15.5" x2="35" y2="15.5" stroke-width="3px" stroke-miterlimit="10"/>
             <line x1="13" y1="31.5" x2="35" y2="31.5" stroke-width="3px" stroke-miterlimit="10"/>
             <line x1="13" y1="23.5" x2="35" y2="23.5" stroke-width="3px" stroke-miterlimit="10"/>
