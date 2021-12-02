@@ -258,6 +258,13 @@ html {
   background-color: white;
 }
 
+/* MUSIC CSS */
+
+.z-music-panel {
+  width: 100%;
+  padding: 16px;
+}
+
 /* ANIMATIONS */
 
 .z-navanim-bio {
@@ -371,29 +378,26 @@ html {
   to {bottom: 0px; opacity: 1; clip-path: inset(0 0);}
 }
 
-/* .z-memberanim-box {
-  animation: box 0.5s;
-  animation-delay: 0.4s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: both;
-}*/
-
-@keyframes box {
-  from {opacity:0;clip-path: inset(0 100%);}
-  to {opacity:1;clip-path: inset(0 0);}
-}
-
 .z-memberanim-instrument, .z-memberanim-name {
   opacity: 0;
   animation: fade 0.25s;
   animation-delay: 0.5s;
-  animation-timing-function: ease-in;
+  animation-timing-function: ease-out;
   animation-fill-mode: forwards;
+  position: relative;
+}
+
+.z-memberanim-instrument {
+  animation-delay: 0.5s;
+}
+
+.z-memberanim-name {
+  animation-delay: 0.6s;
 }
 
 @keyframes fade {
-  from {opacity:0;}
-  to {opacity:1;}
+  from {top:-4px;opacity:0;}
+  to {top:0;opacity:1;}
 }
 
 .reveal{
@@ -535,7 +539,7 @@ html {
 
 <div class="w3-black z-placeholder"></div>
 
-<section id="music" class="w3-container z-fullscreen">
+<!--<section id="music" class="w3-container z-fullscreen">
   <div class="w3-content w3-center z-music reveal">
     <div class="z-section-header">
       <h3 class="w3-center z-wide">ZENE<h3>
@@ -558,6 +562,26 @@ html {
     	   <a href="https://www.youtube.com/watch?v=2qkPaPY1UXA" target="_blank" class="w3-margin w3-border w3-border-white  w3-ripple z-wide-lowercase z-btn z-btn-def">komló</a>
     	</div>
     </div>
+  </div>
+</section>-->
+
+<section id="music" class="w3-container w3-black z-fullscreen">
+  <div class="w3-center reveal" style="margin-left:auto; margin-right:auto;">
+    <div class="z-section-header">
+      <h3 class="w3-center z-wide">ZENE<h3>
+    </div>
+  	<div id="sotetkamra" class="z-music-panel w3-red">
+  	   <a href="https://open.spotify.com/album/3iOPd3yPBtG2YyS3ltQRSy" target="_blank" class="w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">sötétkamra</a>
+  	</div>
+  	<div id="vakfolt" class="z-music-panel w3-blue">
+  	   <a href="https://youtu.be/SoqpvfHThXU" target="_blank" class="w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">vakfolt</a>
+  	</div>
+  	<div id="csillaganizs" class="z-music-panel w3-orange">
+  	   <a href="https://youtu.be/jk9oy0XXVuY" target="_blank" class="w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">csillagánizs</a>
+  	</div>
+  	<div id="komlo" class="z-music-panel w3-green">
+  	   <a href="https://www.youtube.com/watch?v=2qkPaPY1UXA" target="_blank" class="w3-border w3-border-white  w3-ripple z-wide-lowercase z-btn z-btn-def">komló</a>
+  	</div>
   </div>
 </section>
 
@@ -618,7 +642,7 @@ html {
   <div id="zNavbarbarBg" class="w3-bottom w3-center z-navanim-bg" style="width: 100vw; height: 128px; display: none;"></div>
   <div id="zBurger" class="w3-bottom" style="width: 100vw; height: 128px; padding-top: 40px;">
     <div class="w3-center">
-      <button class="z-btn z-btn-burger" style="padding:0;" onclick="open_zMenu();">
+      <button class="z-btn z-btn-burger z-navanim-hamburger" style="padding:0;" onclick="open_zMenu();">
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" style="margin-left:-3px; margin-top:-3px;">
           <title>⁯Menü</title>
           <g>
