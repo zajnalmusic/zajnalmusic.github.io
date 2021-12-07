@@ -24,6 +24,7 @@ body,h1,h2,h3,h4,h5,h6 {
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
 }
 
 /* Material icons */
@@ -46,6 +47,8 @@ html {
   height: -webkit-fill-available !important;
 }
 
+.z-section {scroll-snap-align: start;}
+
 .z-placeholder {height: 128px;}
 
 .z-bio {max-width: 800px;}
@@ -59,7 +62,10 @@ html {
   margin: auto;
 }
 
-.z-section-header {height: 128px; padding-top: 36px;}
+.z-section-header {
+  height: 128px;
+  padding-top: 36px;
+}
 
 #zFullscreenMenu {
   width: 100vw;
@@ -77,10 +83,19 @@ html {
   text-decoration:none;
   color:inherit;
   background-color:inherit;
+  border: 1px solid white;
   text-align:center;
   cursor:pointer;
   white-space:nowrap;
   display: inline-block;
+  transition: all 0.5s ease;
+}
+
+.z-btn-sotetkamra {
+  color: red;
+  border: 2px solid red;
+  font-weight: 500 !important;
+  text-transform: uppercase;
 }
 
 .z-btn-disabled {
@@ -174,6 +189,11 @@ html {
     color: black !important;
   }
 
+  .z-btn-sotetkamra:hover {
+    background-color: red !important;
+    color: white !important;
+  }
+
   .z-btn-nav:hover {
     transition: 0.1s ease-in;
     stroke-width: 3px;
@@ -262,7 +282,32 @@ html {
 
 .z-music-panel {
   width: 100%;
-  padding: 16px;
+  min-height: 64px;
+  height: calc(100vh / 4 - 64px);
+}
+
+.z-video-music {
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+@media (hover: hover) {
+  .z-music-panel {
+    width: 100%;
+    min-height: 64px;
+    height: calc(100vh / 5 - 51px);
+    transition: all 0.5s ease;
+  }
+
+  .z-music-panel:hover {
+    min-height: 128px;
+    height: calc(100vh / 2.5 - 102px);
+  }
+
 }
 
 /* ANIMATIONS */
@@ -342,7 +387,7 @@ html {
   to {bottom:0;opacity:1;}
 }
 
-.z-navanim-menuclose {
+.z-navanim-fullscreenmenu {
   animation: fade 0.3s;
   animation-timing-function: ease-in;
 }
@@ -400,15 +445,25 @@ html {
   to {top:0;opacity:1;}
 }
 
-.reveal{
+.zReveal{
   position: relative;
-  transform: translateY(128px);
+  transform: translateY(32px);
   opacity: 0;
-  transition: 1s all ease;
+  transition: transform 1s, opacity 1s;
+  transition-timing-function: ease;
 }
 
-.reveal.active{
+.zReveal.active{
   transform: translateY(0);
+  opacity: 1;
+}
+
+.zRevealOpacity{
+  opacity: 0.2;
+  transition: all 0.5s ease;
+}
+
+.zRevealOpacity.active{
   opacity: 1;
 }
 
@@ -418,7 +473,7 @@ html {
 
 <body class="w3-black">
 
-<header id="home" class="w3-display-container z-fullscreen">
+<header id="home" class="w3-display-container z-fullscreen z-section">
 	<video autoplay muted loop poster="assets/zajnal_hero.jpg" id="zajnal" class="z-video-hero">
 		<source src="assets/zajnal_hero.mp4" type="video/mp4">
 	</video>
@@ -442,76 +497,78 @@ html {
 
 <div class="w3-black z-placeholder"></div>
 
-<section id="bio" class="w3-container w3-black z-fullscreen">
-  <div class="w3-content z-bio reveal">
-    <div class="z-section-header">
+<section id="bio" class="w3-container w3-black z-fullscreen z-section">
+  <div class="w3-content z-bio">
+    <div class="z-section-header zReveal">
       <h3 class="w3-center z-wide">RÓLUNK<h3>
     </div>
     <div class="w3-large">
-      <p style="margin-top:-8px;">2015-ben indultunk furulya-citera duóként, öt éve működünk – cajonnal és basszusgitárral kiegészülve – zenekarként. Nem a népzene felől kanyarodunk a kortárs felé, és nem is viszont: úgy adódott, hogy népi és urbánus hatások mindig párhuzamosan voltak jelen az életünkben, így a produkciónk sem keresgélés, hanem lenyomat.</p>
+      <p class="zReveal" style="margin-top:-8px;">2015-ben indultunk furulya-citera duóként, öt éve működünk – cajonnal és basszusgitárral kiegészülve – zenekarként. Nem a népzene felől kanyarodunk a kortárs felé, és nem is viszont: úgy adódott, hogy népi és urbánus hatások mindig párhuzamosan voltak jelen az életünkben, így a produkciónk sem keresgélés, hanem lenyomat.</p>
       <!--<img src="assets/bio/band_a.jpg" width="100%">-->
-      <div class="w3-panel w3-black z-leftbar">
-        <p class="w3-xlarge">
+      <div class="w3-panel w3-black z-leftbar zReveal">
+        <p class="w3-xlarge zReveal">
         <i>&bdquo;...a produkciónk sem keresgélés, hanem lenyomat.&rdquo;</i></p>
       </div>
-      <p>2019-ben jelent meg első kislemezünk, a Pusztafless, 2020-ban pedig bejutottunk a Szimpla Lemming programjába, ott voltunk a Veszprémi Utcazene Fesztiválon, majd az Öröm a zene tehetségkutatón az év felfedezettje díjat is megkaptuk.</p>
+      <p class="zReveal">2019-ben jelent meg első kislemezünk, a Pusztafless, 2020-ban pedig bejutottunk a Szimpla Lemming programjába, ott voltunk a Veszprémi Utcazene Fesztiválon, majd az Öröm a zene tehetségkutatón az év felfedezettje díjat is megkaptuk.</p>
       <!--<img src="assets/bio/band_b.jpg" width="100%">-->
-      <p>Idén induló előadóként részt veszünk az NKA Hangfoglaló programjában, valamint a Kreatív Európa társfinanszírozásában megvalósuló, országhatárokon átívelő TREMOLO Projectben. Legújabb, Sötétkamra című kislemezünket október 14-én, az A38 hajón mutattuk be – az erről az anyagról singleként megjelent Csillagánizs című dalunk videoklipje pedig ott volt az idei Klipszemle versenyprogramjában is.</p>
+      <p class="zReveal">Idén induló előadóként részt veszünk az NKA Hangfoglaló programjában, valamint a Kreatív Európa társfinanszírozásában megvalósuló, országhatárokon átívelő TREMOLO Projectben. Legújabb, Sötétkamra című kislemezünket október 14-én, az A38 hajón mutattuk be – az erről az anyagról singleként megjelent Csillagánizs című dalunk videoklipje pedig ott volt az idei Klipszemle versenyprogramjában is.</p>
     </div>
   <!--<div class="w3-black z-placeholder"></div>-->
   </div>
 </section>
 
-<section id="members" class="w3-container w3-black">
-  <div class="w3-display-container w3-content reveal" style="max-width:800px;">
-    <div class="z-section-header">
+<section id="members" class="w3-container w3-black z-section">
+  <div class="w3-display-container w3-content" style="max-width:800px;">
+    <div class="z-section-header zReveal">
       <h3 class="w3-center z-wide">TAGOK<h3>
     </div>
-  	<div class="mySlides">
-  		<img src="assets/members_wide/gabor.jpg" class="z-members-img z-memberanim-img">
-      <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
-        <div class="w3-display-middle" style="width: calc(100% - 96px);">
-          <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">furulya<p>
-          <p class="z-wide z-memberanim-name">KOVÁCS GÁBOR<p>
-        </div>
-  		</div>
-  	</div>
-  	<div class="mySlides">
-  		<img src="assets/members_wide/zsoca.jpg" class="z-members-img z-memberanim-img">
-      <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
-        <div class="w3-display-middle" style="width: calc(100% - 96px);">
-            <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">cajon<p>
-            <p class="z-wide z-memberanim-name">MOLDVÁN ZSOLT<p>
+    <div class="zReveal">
+      <div class="mySlides">
+    		<img src="assets/members_wide/gabor.jpg" class="z-members-img z-memberanim-img">
+        <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
+          <div class="w3-display-middle" style="width: calc(100% - 96px);">
+            <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">furulya<p>
+            <p class="z-wide z-memberanim-name">KOVÁCS GÁBOR<p>
           </div>
-  			</div>
-  	</div>
-  	<div class="mySlides">
-  		<img src="assets/members_wide/srob.jpg" class="z-members-img z-memberanim-img">
-      <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
-        <div class="w3-display-middle" style="width: calc(100% - 96px);">
-            <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">basszusgitár<p>
-            <p class="z-wide z-memberanim-name">SCHNEIDER RÓBERT<p>
-          </div>
-  			</div>
-  	</div>
-    <div class="mySlides">
-  		<img src="assets/members_wide/boldi.jpg" class="z-members-img z-memberanim-img">
-      <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
-        <div class="w3-display-middle" style="width: calc(100% - 96px);">
-            <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">citera<p>
-            <p class="z-wide z-memberanim-name">TAMÁS BOLDIZSÁR<p>
-          </div>
-  			</div>
-  	</div>
-    <div class="w3-text-black w3-white w3-display-bottomleft z-btn-slide-left" onclick="plusDivs(-1)">
-      <span class="material-icons-outlined md-18" style="margin-top:3px;">
-        arrow_back_ios
-      </span>
-    </div>
-  	<div class="w3-text-black w3-white w3-display-bottomright z-btn-slide-right" onclick="plusDivs(1)">
-      <span class="material-icons-outlined md-18" style="margin-top:3px;">
-        arrow_forward_ios
-      </span>
+    		</div>
+    	</div>
+    	<div class="mySlides">
+    		<img src="assets/members_wide/zsoca.jpg" class="z-members-img z-memberanim-img">
+        <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
+          <div class="w3-display-middle" style="width: calc(100% - 96px);">
+              <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">cajon<p>
+              <p class="z-wide z-memberanim-name">MOLDVÁN ZSOLT<p>
+            </div>
+    			</div>
+    	</div>
+    	<div class="mySlides">
+    		<img src="assets/members_wide/srob.jpg" class="z-members-img z-memberanim-img">
+        <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
+          <div class="w3-display-middle" style="width: calc(100% - 96px);">
+              <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">basszusgitár<p>
+              <p class="z-wide z-memberanim-name">SCHNEIDER RÓBERT<p>
+            </div>
+    			</div>
+    	</div>
+      <div class="mySlides">
+    		<img src="assets/members_wide/boldi.jpg" class="z-members-img z-memberanim-img">
+        <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
+          <div class="w3-display-middle" style="width: calc(100% - 96px);">
+              <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">citera<p>
+              <p class="z-wide z-memberanim-name">TAMÁS BOLDIZSÁR<p>
+            </div>
+    			</div>
+    	</div>
+      <div class="w3-text-black w3-white w3-display-bottomleft z-btn-slide-left" onclick="plusDivs(-1)">
+        <span class="material-icons-outlined md-18" style="margin-top:3px;">
+          arrow_back_ios
+        </span>
+      </div>
+    	<div class="w3-text-black w3-white w3-display-bottomright z-btn-slide-right" onclick="plusDivs(1)">
+        <span class="material-icons-outlined md-18" style="margin-top:3px;">
+          arrow_forward_ios
+        </span>
+      </div>
     </div>
 
   	<script>
@@ -540,7 +597,7 @@ html {
 <div class="w3-black z-placeholder"></div>
 
 <!--<section id="music" class="w3-container z-fullscreen">
-  <div class="w3-content w3-center z-music reveal">
+  <div class="w3-content w3-center z-music zReveal">
     <div class="z-section-header">
       <h3 class="w3-center z-wide">ZENE<h3>
     </div>
@@ -565,67 +622,81 @@ html {
   </div>
 </section>-->
 
-<section id="music" class="w3-container w3-black z-fullscreen">
-  <div class="w3-center reveal" style="margin-left:auto; margin-right:auto;">
-    <div class="z-section-header">
+<section id="music" class="w3-black z-fullscreen z-section">
+  <div class="w3-center" style="margin-left:auto; margin-right:auto;">
+    <div class="z-section-header zReveal">
       <h3 class="w3-center z-wide">ZENE<h3>
     </div>
-  	<div id="sotetkamra" class="z-music-panel w3-red">
-  	   <a href="https://open.spotify.com/album/3iOPd3yPBtG2YyS3ltQRSy" target="_blank" class="w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">sötétkamra</a>
+  	<div id="sotetkamra" class="w3-display-container z-music-panel w3-black zRevealOpacity">
+       <video autoplay muted loop poster="assets/music/sotetkamra.jpg" id="zajnal" class="z-video-music" style="opacity: 50%;">
+         <source src="assets/music/sotetkamra.mp4" type="video/mp4">
+       </video>
+  	   <a href="https://open.spotify.com/album/3iOPd3yPBtG2YyS3ltQRSy" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">sötétkamra</a>
   	</div>
-  	<div id="vakfolt" class="z-music-panel w3-blue">
-  	   <a href="https://youtu.be/SoqpvfHThXU" target="_blank" class="w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">vakfolt</a>
+  	<div id="csillaganizs" class="w3-display-container z-music-panel zRevealOpacity">
+       <video autoplay muted loop poster="assets/music/csillaganizs.jpg" id="zajnal" class="z-video-music">
+         <source src="assets/music/csillaganizs.mp4" type="video/mp4">
+       </video>
+       <a href="https://youtu.be/jk9oy0XXVuY" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">csillagánizs</a>
   	</div>
-  	<div id="csillaganizs" class="z-music-panel w3-orange">
-  	   <a href="https://youtu.be/jk9oy0XXVuY" target="_blank" class="w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">csillagánizs</a>
+    <div id="vakfolt" class="w3-display-container z-music-panel zRevealOpacity">
+       <video autoplay muted loop poster="assets/music/vakfolt.jpg" id="zajnal" class="z-video-music">
+         <source src="assets/music/vakfolt.mp4" type="video/mp4">
+       </video>
+       <a href="https://youtu.be/SoqpvfHThXU" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">vakfolt</a>
   	</div>
-  	<div id="komlo" class="z-music-panel w3-green">
-  	   <a href="https://www.youtube.com/watch?v=2qkPaPY1UXA" target="_blank" class="w3-border w3-border-white  w3-ripple z-wide-lowercase z-btn z-btn-def">komló</a>
+  	<div id="komlo" class="w3-display-container z-music-panel zRevealOpacity">
+       <video autoplay muted loop poster="assets/music/komlo.jpg" id="zajnal" class="z-video-music">
+         <source src="assets/music/komlo.mp4" type="video/mp4">
+       </video>
+       <a href="https://www.youtube.com/watch?v=2qkPaPY1UXA" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">komló</a>
   	</div>
   </div>
 </section>
 
 <div class="w3-black z-placeholder"></div>
 
-<section id="contact" class="w3-container w3-black z-fullscreen">
-	<div class="w3-content w3-center w3-large z-contact reveal">
+<section id="contact" class="w3-container w3-black z-fullscreen z-section">
+	<div class="w3-content w3-center w3-large z-contact zReveal">
     <div class="z-section-header">
       <h3 class="w3-center z-wide">KONTAKT<h3>
     </div>
-    <a href="mailto:zajnalmusic@gmail.com" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">
-			e-mail
-		</a>
-		<a href="https://www.instagram.com/zajnalmusic/" target="_blank" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">
-			instagram
-		</a>
-		<a href="https://www.facebook.com/zajnalmusic/" target="_blank" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">
-			facebook
-		</a>
-		<a href="https://www.youtube.com/zajnalmusic/" target="_blank" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">
-			youtube
-		</a>
-		<a href="https://open.spotify.com/artist/0fPavCFAklDixqi98zT05V/" target="_blank" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">
-			spotify
-		</a>
-		<a href="https://soundcloud.com/zajnalmusic/" target="_blank" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">
-			soundcloud
-		</a>
+    <div class="">
+      <a href="mailto:zajnalmusic@gmail.com" class="w3-margin w3-ripple z-wide-lowercase z-btn z-btn-def" style="margin-top: 0px !important;">
+  			e-mail
+  		</a>
+  		<a href="https://www.instagram.com/zajnalmusic/" target="_blank" class="w3-margin z-wide-lowercase z-btn z-btn-def">
+  			instagram
+  		</a>
+  		<a href="https://www.facebook.com/zajnalmusic/" target="_blank" class="w3-margin w3-ripple z-wide-lowercase z-btn z-btn-def">
+  			facebook
+  		</a>
+  		<a href="https://www.youtube.com/zajnalmusic/" target="_blank" class="w3-margin w3-ripple z-wide-lowercase z-btn z-btn-def">
+  			youtube
+  		</a>
+  		<a href="https://open.spotify.com/artist/0fPavCFAklDixqi98zT05V/" target="_blank" class="w3-margin w3-ripple z-wide-lowercase z-btn z-btn-def">
+  			spotify
+  		</a>
+  		<a href="https://soundcloud.com/zajnalmusic/" target="_blank" class="w3-margin w3-ripple z-wide-lowercase z-btn z-btn-def">
+  			soundcloud
+  		</a>
+    </div>
 	</div>
 </section>
 
-<footer class="w3-container w3-black w3-center z-wide-lowercase" style="height: 170px; text-indent: 0.6em;">
-	<p>&#169; Zajnal 2021</p>
+<footer class="w3-container w3-black w3-center z-wide-lowercase" style="height: 170px; text-indent: 0.6em; scroll-snap-align: end;">
+	<p class="">&#169; Zajnal 2021</p>
 </footer>
 
 <nav>
-  <div id="zFullscreenMenu" class="w3-top w3-large w3-display-container w3-black z-navanim-menuclose w3-padding-32">
+  <div id="zFullscreenMenu" class="w3-top w3-large w3-display-container w3-black z-navanim-fullscreenmenu w3-padding-32"> <!-- TODO: Glitch a menüsáv tetején? -->
     <div class="w3-center">
       <a href="" class="z-btn-disabled z-navanim-shop w3-margin w3-button w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-navpanel">
   			shop
   		</a>
     </div>
     <div class="w3-center">
-      <a href="" class="z-navanim-org w3-margin w3-button w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-navpanel">
+      <a href="org.html" class="z-navanim-org w3-margin w3-button w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-navpanel">
         szervezőknek
       </a>
     </div>
@@ -639,6 +710,7 @@ html {
       <span class="material-icons-outlined md-24 w3-display-middle">keyboard_arrow_down</span>
     </button>
   </div>
+  <!--<div id="gradient" class="w3-bottom w3-center" style="width: 100vw; height: 128px; background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1))"></div>-->
   <div id="zNavbarbarBg" class="w3-bottom w3-center z-navanim-bg" style="width: 100vw; height: 128px; display: none;"></div>
   <div id="zBurger" class="w3-bottom" style="width: 100vw; height: 128px; padding-top: 40px;">
     <div class="w3-center">
@@ -718,29 +790,49 @@ html {
     document.getElementById("zNavbarbar").style.display = "none";
     document.getElementById("zFullscreenMenu").style.display = "none";
     document.getElementById("zNavbarbarBg").style.display = "none";
-    document.getElementById("zBurger").style.display = "block";
+    document.getElementById("zBurger").style.display = "initial";
   }
 
 
 </script>
 <script>
-  function reveal() {
-    var reveals = document.querySelectorAll(".reveal");
+  function zReveal() {
+    var zReveals = document.querySelectorAll(".zReveal");
 
-    for (var i = 0; i < reveals.length; i++) {
+    for (var i = 0; i < zReveals.length; i++) {
       var windowHeight = window.innerHeight;
-      var elementTop = reveals[i].getBoundingClientRect().top;
-      var elementVisible = 150;
+      var elementTop = zReveals[i].getBoundingClientRect().top;
+      var elementVisible = 128;
 
       if (elementTop < windowHeight - elementVisible) {
-        reveals[i].classList.add("active");
+        zReveals[i].classList.add("active");
       } else {
-        reveals[i].classList.remove("active");
+        zReveals[i].classList.remove("active");
       }
     }
   }
 
-  window.addEventListener("scroll", reveal);
+  window.addEventListener("scroll", zReveal);
+</script>
+
+<script>
+  function zRevealOpacity() {
+    var zRevealOpacitys = document.querySelectorAll(".zRevealOpacity");
+
+    for (var i = 0; i < zRevealOpacitys.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = zRevealOpacitys[i].getBoundingClientRect().top;
+      var elementVisible = 192;
+
+      if (elementTop < windowHeight - elementVisible) {
+        zRevealOpacitys[i].classList.add("active");
+      } else {
+        zRevealOpacitys[i].classList.remove("active");
+      }
+    }
+  }
+
+  window.addEventListener("scroll", zRevealOpacity);
 </script>
 
 </body>
