@@ -19,12 +19,11 @@
 body,h1,h2,h3,h4,h5,h6 {
   font-family: Jost, sans-serif;
   font-weight: 300;
-  /*overflow-x: hidden;*/
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
 }
 
 /* Material icons */
@@ -41,13 +40,19 @@ html {
 
 /* LAYOUT CSS */
 
-.z-fullscreen {
+.z-section {
   width: 100% !important;
-  min-height: 100vh !important;
-  height: -webkit-fill-available !important;
+  height: 100vh !important;
+  scroll-snap-align: start;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
-.z-section {scroll-snap-align: start;}
+.z-section::-webkit-scrollbar {
+  display: none;
+}
 
 .z-placeholder {height: 128px;}
 
@@ -130,10 +135,12 @@ html {
 }
 
 .z-btn-slide-left, .z-btn-slide-right {
-  width: 48px;
-  height: 64px;
+  display: block;
+  width: 64px;
+  min-height: 320px;
+  height: calc(100vh - 335px);
   text-align: center;
-  padding-top: 20px;
+  padding: 0 16px 0 16px;
   transition: 0.2s ease-out;
   cursor: pointer;
 }
@@ -141,11 +148,15 @@ html {
 .z-btn-slide-left {
   margin-left: 0px;
   text-indent: -1px;
+  opacity: 0;
+  background-image: linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 30%, rgba(0,0,0,0) 100%);
 }
 
 .z-btn-slide-right {
   margin-right: 0px;
   text-indent: 1px;
+  opacity: 0;
+  background-image: linear-gradient(to left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 30%, rgba(0,0,0,0) 100%);
 }
 
 .z-btn-burger {
@@ -210,14 +221,9 @@ html {
     margin-bottom: 28px;
   }
 
-  .z-btn-slide-left:hover {
-    margin-left: -8px;
-    width: 56px;
-  }
-
-  .z-btn-slide-right:hover {
-    margin-right: -8px;
-    width: 56px;
+  .z-btn-slide-left:hover, .z-btn-slide-right:hover {
+    opacity: 1;
+    padding: 0 12px 0 12px;
   }
 
 }
@@ -272,10 +278,64 @@ html {
 }
 
 .z-members-box {
+  height: 80px;
+  position: relative;
+}
+
+#z-carousel-container {
+  display: block;
+  position: relative;
+  margin: auto;
+  max-width: 800px;
   width: 100%;
-  height: 64px;
-  color: black;
-  background-color: white;
+  min-height: 320px;
+  height: calc(100vh - 256px);
+  padding: 0;
+  overflow: scroll hidden;
+  --slide-count: 4;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-color: rgba(0,0,0,0) #fff;
+  scrollbar-width: 3px;
+}
+
+.z-carousel-btn-container {
+  position: relative;
+  margin: auto;
+  max-width: 800px;
+  width: 100%;
+  padding: 0;
+  bottom: calc(50vh - 87px);
+}
+
+#z-carousel-container::-webkit-scrollbar {height: 3px;}
+#z-carousel-container::-webkit-scrollbar-track {background: rgba(0,0,0,0);}
+#z-carousel-container::-webkit-scrollbar-thumb {background: #fff;}
+
+.z-carousel {
+  width: calc(100% * var(--slide-count));
+  display: flex;
+}
+
+.z-carousel-slide{
+  min-height: 256px;
+  height: calc(100vh - 256px);
+  width: 100vw;
+  max-width: 800px;
+  object-fit: cover;
+  object-position: top;
+  scroll-snap-align: start;
+}
+
+.z-carousel-slide > img {
+  min-height: 256px;
+  height: calc(100vh - 336px);
+  width: 100vw;
+  max-width: 800px;
+  object-fit: cover;
+  object-position: top;
+  scroll-snap-align: start;
 }
 
 /* MUSIC CSS */
@@ -473,7 +533,7 @@ html {
 
 <body class="w3-black">
 
-<header id="home" class="w3-display-container z-fullscreen z-section">
+<header id="home" class="w3-display-container z-section">
 	<video autoplay muted loop poster="assets/zajnal_hero.jpg" id="zajnal" class="z-video-hero">
 		<source src="assets/zajnal_hero.mp4" type="video/mp4">
 	</video>
@@ -497,27 +557,25 @@ html {
 
 <div class="w3-black z-placeholder"></div>
 
-<section id="bio" class="w3-container w3-black z-fullscreen z-section">
+<section id="bio" class="w3-container w3-black z-section">
   <div class="w3-content z-bio">
     <div class="z-section-header zReveal">
       <h3 class="w3-center z-wide">RÓLUNK<h3>
     </div>
-    <div class="w3-large">
-      <p class="zReveal" style="margin-top:-8px;">2015-ben indultunk furulya-citera duóként, öt éve működünk – cajonnal és basszusgitárral kiegészülve – zenekarként. Nem a népzene felől kanyarodunk a kortárs felé, és nem is viszont: úgy adódott, hogy népi és urbánus hatások mindig párhuzamosan voltak jelen az életünkben, így a produkciónk sem keresgélés, hanem lenyomat.</p>
-      <!--<img src="assets/bio/band_a.jpg" width="100%">-->
+    <div class="w3-large zReveal">
+      <pstyle="margin-top:-8px;">2015-ben indultunk furulya-citera duóként, öt éve működünk – cajonnal és basszusgitárral kiegészülve – zenekarként. Nem a népzene felől kanyarodunk a kortárs felé, és nem is viszont: úgy adódott, hogy népi és urbánus hatások mindig párhuzamosan voltak jelen az életünkben, így a produkciónk sem keresgélés, hanem lenyomat.</p>
       <div class="w3-panel w3-black z-leftbar zReveal">
         <p class="w3-xlarge zReveal">
         <i>&bdquo;...a produkciónk sem keresgélés, hanem lenyomat.&rdquo;</i></p>
       </div>
-      <p class="zReveal">2019-ben jelent meg első kislemezünk, a Pusztafless, 2020-ban pedig bejutottunk a Szimpla Lemming programjába, ott voltunk a Veszprémi Utcazene Fesztiválon, majd az Öröm a zene tehetségkutatón az év felfedezettje díjat is megkaptuk.</p>
-      <!--<img src="assets/bio/band_b.jpg" width="100%">-->
-      <p class="zReveal">Idén induló előadóként részt veszünk az NKA Hangfoglaló programjában, valamint a Kreatív Európa társfinanszírozásában megvalósuló, országhatárokon átívelő TREMOLO Projectben. Legújabb, Sötétkamra című kislemezünket október 14-én, az A38 hajón mutattuk be – az erről az anyagról singleként megjelent Csillagánizs című dalunk videoklipje pedig ott volt az idei Klipszemle versenyprogramjában is.</p>
+      <p>2019-ben jelent meg első kislemezünk, a Pusztafless, 2020-ban pedig bejutottunk a Szimpla Lemming programjába, ott voltunk a Veszprémi Utcazene Fesztiválon, majd az Öröm a zene tehetségkutatón az év felfedezettje díjat is megkaptuk.</p>
+      <p>Idén induló előadóként részt veszünk az NKA Hangfoglaló programjában, valamint a Kreatív Európa társfinanszírozásában megvalósuló, országhatárokon átívelő TREMOLO Projectben. Legújabb, Sötétkamra című kislemezünket október 14-én, az A38 hajón mutattuk be – az erről az anyagról singleként megjelent Csillagánizs című dalunk videoklipje pedig ott volt az idei Klipszemle versenyprogramjában is.</p>
     </div>
-  <!--<div class="w3-black z-placeholder"></div>-->
   </div>
+  <div class="w3-black z-placeholder"></div>
 </section>
 
-<section id="members" class="w3-container w3-black z-section">
+<!--<section id="members" class="w3-container w3-black z-section">
   <div class="w3-display-container w3-content" style="max-width:800px;">
     <div class="z-section-header zReveal">
       <h3 class="w3-center z-wide">TAGOK<h3>
@@ -591,10 +649,76 @@ html {
   		}
   	</script>
   </div>
-</section>
-<div class="w3-black z-placeholder"></div>
+</section>-->
 
-<div class="w3-black z-placeholder"></div>
+<section id="members" class="w3-black z-section">
+  <div class="w3-center z-section-header zReveal">
+    <h3 class="z-wide">TAGOK<h3>
+  </div>
+  <div id="z-carousel-container" class="zReveal"> <!-- TODO: Parallax scrolling? -->
+    <div class="z-carousel">
+      <div class="z-carousel-slide">
+        <img src="assets/members_wide/gabor.jpg" alt="Kovács Gábor">
+        <div class="w3-display-container z-members-box zReveal">
+          <div class="w3-display-middle w3-center" style="width: calc(100% - 96px);">
+            <p class="w3-small z-wide-lowercase" style="margin-bottom: -16px;">furulya, doromb, citera<p>
+            <p class="w3-medium z-wide">KOVÁCS GÁBOR<p>
+          </div>
+        </div>
+      </div>
+      <div class="z-carousel-slide">
+        <img src="assets/members_wide/zsoca.jpg" alt="Moldván Zsolt">
+        <div class="w3-center z-members-box zReveal">
+          <div class="w3-display-middle w3-center" style="width: calc(100% - 96px);">
+            <p class="w3-small z-wide-lowercase" style="margin-bottom: -16px;">cajon<p>
+            <p class="w3-medium z-wide">MOLDVÁN ZSOLT<p>
+          </div>
+        </div>
+      </div>
+      <div class="z-carousel-slide">
+        <img src="assets/members_wide/srob.jpg" alt="Schneider Róbert">
+        <div class="w3-center z-members-box zReveal">
+          <div class="w3-display-middle w3-center" style="width: calc(100% - 96px);">
+            <p class="w3-small z-wide-lowercase" style="margin-bottom: -16px;">basszusgitár<p>
+            <p class="w3-medium z-wide">SCHNEIDER RÓBERT<p>
+          </div>
+        </div>
+      </div>
+      <div class="z-carousel-slide">
+        <img src="assets/members_wide/boldi.jpg" alt="Tamás Boldizsár">
+        <div class="w3-center z-members-box zReveal">
+          <div class="w3-display-middle w3-center" style="width: calc(100% - 96px);">
+            <p class="w3-small z-wide-lowercase" style="margin-bottom: -16px;">citera<p>
+            <p class="w3-medium z-wide">TAMÁS BOLDIZSÁR<p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="z-carousel-btn-container"> <!-- TODO: Small screen height fucks up button placement. -->
+    <div class="w3-text-white w3-display-left z-btn-slide-left w3-display-container" onclick="zScrollLeft()">
+      <span class="material-icons-outlined md-24 w3-left" style="margin-top: calc(50vh - 172px);">
+        arrow_back_ios
+      </span>
+    </div>
+    <div class="w3-text-white w3-display-right z-btn-slide-right w3-display-container" onclick="zScrollRight()">
+      <span class="material-icons-outlined md-24 w3-right" style="margin-top: calc(50vh - 172px);">
+        arrow_forward_ios
+      </span>
+    </div>
+  </div>
+  <div class="w3-black z-placeholder"></div>
+</section>
+
+<script>
+function zScrollRight(){
+    document.getElementById("z-carousel-container").scrollLeft += 800;
+}
+
+function zScrollLeft(){
+    document.getElementById("z-carousel-container").scrollLeft -= 800;
+}
+</script>
 
 <!--<section id="music" class="w3-container z-fullscreen">
   <div class="w3-content w3-center z-music zReveal">
@@ -622,46 +746,43 @@ html {
   </div>
 </section>-->
 
-<section id="music" class="w3-black z-fullscreen z-section">
-  <div class="w3-center" style="margin-left:auto; margin-right:auto;">
-    <div class="z-section-header zReveal">
-      <h3 class="w3-center z-wide">ZENE<h3>
-    </div>
-  	<div id="sotetkamra" class="w3-display-container z-music-panel w3-black zRevealOpacity">
-       <video autoplay muted loop poster="assets/music/sotetkamra.jpg" id="zajnal" class="z-video-music" style="opacity: 50%;">
-         <source src="assets/music/sotetkamra.mp4" type="video/mp4">
-       </video>
-  	   <a href="https://open.spotify.com/album/3iOPd3yPBtG2YyS3ltQRSy" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">sötétkamra</a>
-  	</div>
-  	<div id="csillaganizs" class="w3-display-container z-music-panel zRevealOpacity">
-       <video autoplay muted loop poster="assets/music/csillaganizs.jpg" id="zajnal" class="z-video-music">
-         <source src="assets/music/csillaganizs.mp4" type="video/mp4">
-       </video>
-       <a href="https://youtu.be/jk9oy0XXVuY" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">csillagánizs</a>
-  	</div>
-    <div id="vakfolt" class="w3-display-container z-music-panel zRevealOpacity">
-       <video autoplay muted loop poster="assets/music/vakfolt.jpg" id="zajnal" class="z-video-music">
-         <source src="assets/music/vakfolt.mp4" type="video/mp4">
-       </video>
-       <a href="https://youtu.be/SoqpvfHThXU" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">vakfolt</a>
-  	</div>
-  	<div id="komlo" class="w3-display-container z-music-panel zRevealOpacity">
-       <video autoplay muted loop poster="assets/music/komlo.jpg" id="zajnal" class="z-video-music">
-         <source src="assets/music/komlo.mp4" type="video/mp4">
-       </video>
-       <a href="https://www.youtube.com/watch?v=2qkPaPY1UXA" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">komló</a>
-  	</div>
+<section id="music" class="w3-black z-section"> <!-- TODO: Small screen sizes make botto buttons unreachable. -->
+  <div class="z-section-header zReveal">
+    <h3 class="w3-center z-wide">ZENE<h3>
   </div>
+	<div id="sotetkamra" class="w3-display-container z-music-panel w3-black">
+     <video autoplay muted loop poster="assets/music/sotetkamra.jpg" id="zajnal" class="z-video-music" style="opacity: 50%;">
+       <source src="assets/music/sotetkamra.mp4" type="video/mp4">
+     </video>
+	   <a href="https://open.spotify.com/album/3iOPd3yPBtG2YyS3ltQRSy" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">sötétkamra</a>
+	</div>
+	<div id="csillaganizs" class="w3-display-container z-music-panel">
+     <video autoplay muted loop poster="assets/music/csillaganizs.jpg" id="zajnal" class="z-video-music">
+       <source src="assets/music/csillaganizs.mp4" type="video/mp4">
+     </video>
+     <a href="https://youtu.be/jk9oy0XXVuY" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">csillagánizs</a>
+	</div>
+  <div id="vakfolt" class="w3-display-container z-music-panel">
+     <video autoplay muted loop poster="assets/music/vakfolt.jpg" id="zajnal" class="z-video-music">
+       <source src="assets/music/vakfolt.mp4" type="video/mp4">
+     </video>
+     <a href="https://youtu.be/SoqpvfHThXU" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">vakfolt</a>
+	</div>
+	<div id="komlo" class="w3-display-container z-music-panel">
+     <video autoplay muted loop poster="assets/music/komlo.jpg" id="zajnal" class="z-video-music">
+       <source src="assets/music/komlo.mp4" type="video/mp4">
+     </video>
+     <a href="https://www.youtube.com/watch?v=2qkPaPY1UXA" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">komló</a>
+	</div>
+  <!--<div class="w3-black z-placeholder"></div>-->
 </section>
 
-<div class="w3-black z-placeholder"></div>
-
-<section id="contact" class="w3-container w3-black z-fullscreen z-section">
+<section id="contact" class="w3-container w3-black z-section">
 	<div class="w3-content w3-center w3-large z-contact zReveal">
     <div class="z-section-header">
       <h3 class="w3-center z-wide">KONTAKT<h3>
     </div>
-    <div class="">
+    <div class="zReveal">
       <a href="mailto:zajnalmusic@gmail.com" class="w3-margin w3-ripple z-wide-lowercase z-btn z-btn-def" style="margin-top: 0px !important;">
   			e-mail
   		</a>
@@ -682,6 +803,7 @@ html {
   		</a>
     </div>
 	</div>
+  <div class="w3-black z-placeholder"></div>
 </section>
 
 <footer class="w3-container w3-black w3-center z-wide-lowercase" style="height: 170px; text-indent: 0.6em; scroll-snap-align: end;">
@@ -802,7 +924,7 @@ html {
     for (var i = 0; i < zReveals.length; i++) {
       var windowHeight = window.innerHeight;
       var elementTop = zReveals[i].getBoundingClientRect().top;
-      var elementVisible = 128;
+      var elementVisible = 64;
 
       if (elementTop < windowHeight - elementVisible) {
         zReveals[i].classList.add("active");
@@ -813,26 +935,6 @@ html {
   }
 
   window.addEventListener("scroll", zReveal);
-</script>
-
-<script>
-  function zRevealOpacity() {
-    var zRevealOpacitys = document.querySelectorAll(".zRevealOpacity");
-
-    for (var i = 0; i < zRevealOpacitys.length; i++) {
-      var windowHeight = window.innerHeight;
-      var elementTop = zRevealOpacitys[i].getBoundingClientRect().top;
-      var elementVisible = 192;
-
-      if (elementTop < windowHeight - elementVisible) {
-        zRevealOpacitys[i].classList.add("active");
-      } else {
-        zRevealOpacitys[i].classList.remove("active");
-      }
-    }
-  }
-
-  window.addEventListener("scroll", zRevealOpacity);
 </script>
 
 </body>
