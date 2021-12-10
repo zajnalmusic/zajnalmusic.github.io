@@ -16,6 +16,16 @@
 
 <style>
 
+:root {
+  --z-black: #121212;
+  --z-white: #fdfdfd;
+}
+
+.z-black {
+  color: var(--z-white);
+  background-color: var(--z-black);
+}
+
 body,h1,h2,h3,h4,h5,h6 {
   font-family: Jost, sans-serif;
   font-weight: 300;
@@ -23,7 +33,7 @@ body,h1,h2,h3,h4,h5,h6 {
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
 }
 
 /* Material icons */
@@ -42,19 +52,17 @@ html {
 
 .z-section {
   width: 100% !important;
-  height: 100vh !important;
+  min-height: 100vh !important;
+  color: var(--z-white);
+  background-color: var(--z-black);
   scroll-snap-align: start;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
 }
 
-.z-section::-webkit-scrollbar {
-  display: none;
+.z-placeholder {
+  height: 128px;
+  color: var(--z-white);
+  background-color: var(--z-black);
 }
-
-.z-placeholder {height: 128px;}
 
 .z-bio {max-width: 800px;}
 
@@ -67,6 +75,13 @@ html {
   margin: auto;
 }
 
+.z-footer {
+  height: 170px;
+  color: var(--z-white);
+  background-color: var(--z-black);
+  scroll-snap-align: end;
+}
+
 .z-section-header {
   height: 128px;
   padding-top: 36px;
@@ -75,6 +90,8 @@ html {
 #zFullscreenMenu {
   width: 100%;
   height: calc(100% - 128px);
+  color: var(--z-white);
+  background-color: var(--z-black);
   display: none;
   overflow-y: scroll;
   scroll-behavior: smooth;
@@ -101,6 +118,7 @@ html {
   cursor:pointer;
   white-space:nowrap;
   display: inline-block;
+  user-select: none;
   transition: all 0.5s ease;
 }
 
@@ -156,23 +174,12 @@ html {
   min-height: 320px;
   height: calc(100vh - 335px);
   text-align: center;
-  padding: 0 16px 0 16px;
+  padding: 0 28px 0 28px;
+  opacity: 0;
+  background-color: rgba(0,0,0,0.3);
   transition: 0.2s ease-out;
   cursor: pointer;
-}
-
-.z-btn-slide-left {
-  margin-left: 0px;
-  text-indent: -1px;
-  opacity: 0;
-  background-image: linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 30%, rgba(0,0,0,0) 100%);
-}
-
-.z-btn-slide-right {
-  margin-right: 0px;
-  text-indent: 1px;
-  opacity: 0;
-  background-image: linear-gradient(to left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 30%, rgba(0,0,0,0) 100%);
+  user-select: none;
 }
 
 .z-btn-burger {
@@ -239,7 +246,7 @@ html {
 
   .z-btn-slide-left:hover, .z-btn-slide-right:hover {
     opacity: 1;
-    padding: 0 8px 0 8px;
+    padding: 0 18px 0 18px;
   }
 
 }
@@ -308,12 +315,13 @@ html {
   height: calc(100vh - 256px);
   padding: 0;
   overflow: scroll hidden;
+  -webkit-overflow-scroll
   --slide-count: 4;
   scroll-snap-type: x mandatory;
   scroll-snap-stop: always;
   scroll-behavior: smooth;
-  scrollbar-color: rgba(0,0,0,0) #fff;
-  scrollbar-width: 3px;
+  scrollbar-color: #fff rgba(0,0,0,0);
+  scrollbar-width: thin;
 }
 
 .z-carousel-btn-container {
@@ -553,7 +561,7 @@ html {
 
 </head>
 
-<body class="w3-black">
+<body>
 
 <header id="home" class="w3-display-container z-section">
 	<video autoplay muted loop poster="assets/zajnal_hero.jpg" id="zajnal" class="z-video-hero">
@@ -577,16 +585,16 @@ html {
   </div>
 </header>
 
-<div class="w3-black z-placeholder"></div>
+<div class="z-placeholder"></div>
 
-<section id="bio" class="w3-container w3-black z-section">
+<section id="bio" class="w3-container z-section">
   <div class="w3-content z-bio">
     <div class="z-section-header zReveal">
       <h3 class="w3-center z-wide">RÓLUNK<h3>
     </div>
     <div class="w3-large zReveal">
       <pstyle="margin-top:-8px;">2015-ben indultunk furulya-citera duóként, öt éve működünk – cajonnal és basszusgitárral kiegészülve – zenekarként. Nem a népzene felől kanyarodunk a kortárs felé, és nem is viszont: úgy adódott, hogy népi és urbánus hatások mindig párhuzamosan voltak jelen az életünkben, így a produkciónk sem keresgélés, hanem lenyomat.</p>
-      <div class="w3-panel w3-black z-leftbar zReveal">
+      <div class="w3-panel z-leftbar zReveal">
         <p class="w3-xlarge zReveal">
         <i>&bdquo;...a produkciónk sem keresgélés, hanem lenyomat.&rdquo;</i></p>
       </div>
@@ -594,86 +602,10 @@ html {
       <p>Idén induló előadóként részt veszünk az NKA Hangfoglaló programjában, valamint a Kreatív Európa társfinanszírozásában megvalósuló, országhatárokon átívelő TREMOLO Projectben. Legújabb, Sötétkamra című kislemezünket október 14-én, az A38 hajón mutattuk be – az erről az anyagról singleként megjelent Csillagánizs című dalunk videoklipje pedig ott volt az idei Klipszemle versenyprogramjában is.</p>
     </div>
   </div>
-  <div class="w3-black z-placeholder"></div>
+  <div class="z-placeholder"></div>
 </section>
 
-<!--<section id="members" class="w3-container w3-black z-section">
-  <div class="w3-display-container w3-content" style="max-width:800px;">
-    <div class="z-section-header zReveal">
-      <h3 class="w3-center z-wide">TAGOK<h3>
-    </div>
-    <div class="zReveal">
-      <div class="mySlides">
-    		<img src="assets/members_wide/gabor.jpg" class="z-members-img z-memberanim-img">
-        <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
-          <div class="w3-display-middle" style="width: calc(100% - 96px);">
-            <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">furulya<p>
-            <p class="z-wide z-memberanim-name">KOVÁCS GÁBOR<p>
-          </div>
-    		</div>
-    	</div>
-    	<div class="mySlides">
-    		<img src="assets/members_wide/zsoca.jpg" class="z-members-img z-memberanim-img">
-        <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
-          <div class="w3-display-middle" style="width: calc(100% - 96px);">
-              <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">cajon<p>
-              <p class="z-wide z-memberanim-name">MOLDVÁN ZSOLT<p>
-            </div>
-    			</div>
-    	</div>
-    	<div class="mySlides">
-    		<img src="assets/members_wide/srob.jpg" class="z-members-img z-memberanim-img">
-        <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
-          <div class="w3-display-middle" style="width: calc(100% - 96px);">
-              <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">basszusgitár<p>
-              <p class="z-wide z-memberanim-name">SCHNEIDER RÓBERT<p>
-            </div>
-    			</div>
-    	</div>
-      <div class="mySlides">
-    		<img src="assets/members_wide/boldi.jpg" class="z-members-img z-memberanim-img">
-        <div class="w3-medium w3-center w3-display-container z-members-box z-memberanim-box">
-          <div class="w3-display-middle" style="width: calc(100% - 96px);">
-              <p class="z-wide-lowercase z-memberanim-instrument" style="margin-bottom: -16px;">citera<p>
-              <p class="z-wide z-memberanim-name">TAMÁS BOLDIZSÁR<p>
-            </div>
-    			</div>
-    	</div>
-      <div class="w3-text-black w3-white w3-display-bottomleft z-btn-slide-left" onclick="plusDivs(-1)">
-        <span class="material-icons-outlined md-18" style="margin-top:3px;">
-          arrow_back_ios
-        </span>
-      </div>
-    	<div class="w3-text-black w3-white w3-display-bottomright z-btn-slide-right" onclick="plusDivs(1)">
-        <span class="material-icons-outlined md-18" style="margin-top:3px;">
-          arrow_forward_ios
-        </span>
-      </div>
-    </div>
-
-  	<script>
-  		var slideIndex = 1;
-  		showDivs(slideIndex);
-
-  		function plusDivs(n) {
-  			showDivs(slideIndex += n);
-  		}
-
-  		function showDivs(n) {
-  			var i;
-  			var x = document.getElementsByClassName("mySlides");
-  			if (n > x.length) {slideIndex = 1}
-  			if (n < 1) {slideIndex = x.length}
-  			for (i = 0; i < x.length; i++) {
-  				x[i].style.display = "none";
-  			}
-  			x[slideIndex-1].style.display = "block";
-  		}
-  	</script>
-  </div>
-</section>-->
-
-<section id="members" class="w3-black z-section">
+<section id="members" class="z-section">
   <div class="w3-center z-section-header zReveal">
     <h3 class="z-wide">TAGOK<h3>
   </div>
@@ -718,18 +650,18 @@ html {
     </div>
   </div>
   <div class="z-carousel-btn-container hidden-mobile"> <!-- TODO: Small screen height fucks up button placement. -->
-    <div class="w3-text-white w3-display-left z-btn-slide-left w3-display-container" onclick="zScrollLeft()">
+    <div class="w3-text-white w3-display-left z-btn-slide-left" onclick="zScrollLeft()">
       <span class="material-icons-outlined md-24 w3-left" style="margin-top: calc(50vh - 172px);">
         arrow_back_ios
       </span>
     </div>
-    <div class="w3-text-white w3-display-right z-btn-slide-right w3-display-container" onclick="zScrollRight()">
+    <div class="w3-text-white w3-display-right z-btn-slide-right" onclick="zScrollRight()">
       <span class="material-icons-outlined md-24 w3-right" style="margin-top: calc(50vh - 172px);">
         arrow_forward_ios
       </span>
     </div>
   </div>
-  <div class="w3-black z-placeholder"></div>
+  <div class="z-placeholder"></div>
 </section>
 <script>
 function zScrollRight(){
@@ -741,38 +673,12 @@ function zScrollLeft(){
 }
 </script>
 
-<!--<section id="music" class="w3-container z-fullscreen">
-  <div class="w3-content w3-center z-music zReveal">
-    <div class="z-section-header">
-      <h3 class="w3-center z-wide">ZENE<h3>
-    </div>
-
-    <div class="w3-cell-row w3-large">
-    	<div id="sotetkamra" class="w3-half">
-    	   <a href="https://open.spotify.com/album/3iOPd3yPBtG2YyS3ltQRSy" target="_blank" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">sötétkamra</a>
-    	</div>
-    	<div id="vakfolt" class="w3-half">
-    	   <a href="https://youtu.be/SoqpvfHThXU" target="_blank" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">vakfolt</a>
-    	</div>
-  	</div>
-
-  	<div class="w3-cell-row w3-large">
-    	<div id="csillaganizs" class="w3-half">
-    	   <a href="https://youtu.be/jk9oy0XXVuY" target="_blank" class="w3-margin w3-border w3-border-white w3-ripple z-wide-lowercase z-btn z-btn-def">csillagánizs</a>
-    	</div>
-    	<div id="komlo" class="w3-half">
-    	   <a href="https://www.youtube.com/watch?v=2qkPaPY1UXA" target="_blank" class="w3-margin w3-border w3-border-white  w3-ripple z-wide-lowercase z-btn z-btn-def">komló</a>
-    	</div>
-    </div>
-  </div>
-</section>-->
-
-<section id="music" class="w3-black z-section"> <!-- TODO: Small screen sizes make bottom buttons unreachable. -->
+<section id="music" class="z-section"> <!-- TODO: Small screen sizes make bottom buttons unreachable. -->
   <div class="z-section-header zReveal">
     <h3 class="w3-center z-wide">ZENE<h3>
   </div>
   <div class="zReveal">
-  	<div id="sotetkamra" class="w3-display-container z-music-panel w3-black">
+  	<div id="sotetkamra" class="w3-display-container z-music-panel">
        <video autoplay muted loop poster="assets/music/sotetkamra.jpg" id="zajnal" class="z-video-music" style="opacity: 50%;">
          <source src="assets/music/sotetkamra.mp4" type="video/mp4">
        </video>
@@ -797,10 +703,10 @@ function zScrollLeft(){
        <a href="https://www.youtube.com/watch?v=2qkPaPY1UXA" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">komló</a>
   	</div>
   </div>
-  <div class="w3-black z-placeholder"></div>
+  <div class="z-placeholder"></div>
 </section>
 
-<section id="contact" class="w3-container w3-black z-section">
+<section id="contact" class="w3-container z-section">
 	<div class="w3-content w3-center w3-large z-contact zReveal">
     <div class="z-section-header">
       <h3 class="w3-center z-wide">KONTAKT<h3>
@@ -826,15 +732,15 @@ function zScrollLeft(){
   		</a>
     </div>
 	</div>
-  <div class="w3-black z-placeholder"></div>
+  <div class="z-placeholder"></div>
 </section>
 
-<footer class="w3-container w3-black w3-center z-wide-lowercase" style="height: 170px; text-indent: 0.6em; scroll-snap-align: end;">
-	<p class="">&#169; Zajnal 2021</p>
+<footer class="w3-container w3-center z-footer">
+	<p class="z-wide-lowercase" style="text-indent: 0.6em;">&#169; Zajnal 2021</p>
 </footer>
 
 <nav>
-  <div id="zFullscreenMenu" class="w3-top w3-large w3-display-container w3-black z-navanim-fullscreenmenu w3-padding-32"> <!-- TODO: Glitch a menüsáv tetején? -->
+  <div id="zFullscreenMenu" class="w3-top w3-large w3-display-container z-navanim-fullscreenmenu w3-padding-32"> <!-- TODO: Glitch a menüsáv tetején? -->
     <div class="w3-center">
       <a href="" class="z-btn-disabled z-navanim-shop w3-margin w3-ripple z-wide-lowercase z-btn z-btn-navpanel">
   			shop
