@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#121212">
+    <title>zajnal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+
+    <style type="text/css">
+
+    /* IMPORTED STUFF */
+
+      .material-icons.md-18 { font-size: 18px; }
+      .material-icons.md-24 { font-size: 24px; }
+      .material-icons.md-36 { font-size: 36px; }
+      .material-icons.md-48 { font-size: 48px; }
+
+      .material-icons-outlined.md-18 { font-size: 18px; }
+      .material-icons-outlined.md-24 { font-size: 24px; }
+      .material-icons-outlined.md-36 { font-size: 36px; }
+      .material-icons-outlined.md-48 { font-size: 48px; }
+
+    /* TOP LEVEL STUFF */
+
+      :root {
+        --z-black: #121212;
+        --z-white: #fdfdfd;
+        --members-ribbon-height: 5em;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        /*scroll-snap-type: y proximity;*/
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .z-section {
+        width: 100%;
+        min-height: 100vh;
+        color: var(--z-white);
+        background-color: var(--z-black);
+        scroll-snap-align: start;
+      }
+
+    /* HERO CSS */
+
+      #hero {
+        width: 100%;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+      }
+
+      .z-logo {
+        width: clamp(300px, 75%, 75vh);
+      }
+
+      .z-logo-svg{
+        fill: #fff;
+      }
+
+      .z-video-hero {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        object-position: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: -1;
+      }
+
+    /* MEMBERS CSS */
+
+      #members {
+        /*display: grid;
+        grid-column: 10em auto 10em;*/
+      }
+
+      #z-carousel-container {
+        display: block;
+        /*grid-area: 1 / 1 / 1 / 3;*/
+        width: 100%;
+        height: 100vh;
+        padding: 0;
+        overflow: scroll hidden;
+        -webkit-overflow-scroll;
+        --slide-count: 4;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-color: #fff rgba(0,0,0,0);
+        scrollbar-width: thin;
+      }
+
+      #z-carousel-container::-webkit-scrollbar {height: 3px;}
+      #z-carousel-container::-webkit-scrollbar-track {background: rgba(0,0,0,0);}
+      #z-carousel-container::-webkit-scrollbar-thumb {background: #fff;}
+
+      .z-carousel {
+        width: calc(100% * var(--slide-count));
+        display: flex;
+      }
+
+      .z-carousel-slide {
+        height: calc(100vh - var(--members-ribbon-height));
+        width: 100%;
+      }
+
+      .z-carousel-slide > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+      }
+
+      .z-members-ribbon {
+        width: calc(100% * var(--slide-count));
+        display: flex;
+      }
+
+      .z-members-ribbon-slide {
+        height: var(--members-ribbon-height);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .z-members-ribbon-slide > p {
+        margin: 0.125em;
+      }
+
+      .z-carousel-btn-container {
+        position: relative;
+        margin: auto;
+        width: 100%;
+        padding: 0;
+        bottom: calc(50vh - 87px);
+      }
+
+    /* BUTTONS CSS */
+
+      .z-btn {
+      	transition: 0.2s ease-out;
+        background-color: rgba(0,0,0,0);
+        vertical-align: middle;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid var(--z-white);
+        text-align: center;
+        cursor: pointer;
+        white-space: nowrap;
+        display: inline-block;
+        user-select: none;
+        transition: all 0.5s ease;
+        width: 10em;
+        padding: 0.5em;
+      }
+
+      .z-btn:hover {
+        background-color: var(--z-white);
+        color: var(--z-black);
+      }
+
+      .z-btn-slide-left, .z-btn-slide-right {
+        display: block;
+        position: absolute;
+        width: 64px;
+        height: 100vh;
+        text-align: center;
+        padding: 0 28px 0 28px;
+        opacity: 1;
+        background-color: rgba(12,12,12,0.3);
+        transition: 0.2s ease-out;
+        cursor: pointer;
+        user-select: none;
+        bottom:10%;
+      }
+
+      .z-btn-slide-left {
+        /*grid-area: 1 / 1 / 1 / 1;*/
+      }
+
+      .z-btn-slide-right {
+        /*grid-area: 1 / 1 / 3 / 3;*/
+        margin-left: calc(100% - 128px);
+      }
+
+    </style>
+
+  </head>
+  <body>
+
+    <section id="hero">
+        <video autoplay muted loop poster="assets/zajnal_hero.jpg" id="zajnal" class="z-video-hero">
+          <source src="assets/zajnal_hero.mp4" type="video/mp4">
+        </video>
+        <svg xmlns="http://www.w3.org/2000/svg" class="z-logo" viewBox="0 0 514.64 159.69">
+          <title>⁯Zajnal</title>
+          <g class="z-logo-svg">
+            <path  d="M172.82,61.19a42.39,42.39,0,1,0,0,43.42v20.68h6V40.51h-6Zm-36.39,58.1A36.39,36.39,0,1,1,172.82,82.9,36.43,36.43,0,0,1,136.43,119.29Z"/>
+            <path d="M200.9,46.51h39.39v70.78a36.43,36.43,0,0,1-36.39,36.4h-3v6h3a42.44,42.44,0,0,0,42.39-42.4V40.51H200.9Z"/>
+            <path d="M323.26,40.51a42.4,42.4,0,0,0-36.39,20.68V40.51h-6v84.78h6V82.9a36.4,36.4,0,0,1,72.79,0v42.39h6V82.9A42.44,42.44,0,0,0,323.26,40.51Z"/>
+            <polygon points="6.55 40.51 6.55 54.4 12.55 54.4 12.55 46.51 69.24 46.51 0 125.29 75.61 125.29 75.61 119.29 13.26 119.29 82.5 40.51 6.55 40.51"/>
+            <rect x="238.69" y="1.91" width="9.2" height="9.2" transform="translate(66.66 173.94) rotate(-45)"/>
+            <circle cx="136.43" cy="82.9" r="5.16"/>
+            <circle cx="432.52" cy="82.9" r="5.16"/>
+            <path d="M468.92,61.19a42.39,42.39,0,1,0,0,43.42v20.68h6V40.51h-6Zm-36.4,58.1a36.39,36.39,0,1,1,36.4-36.39A36.43,36.43,0,0,1,432.52,119.29Z"/>
+            <rect x="508.64" y="5.51" width="6" height="119.79"/>
+          </g>
+        </svg>
+    </section>
+
+    <section id="bio" class="z-section">
+      <header>
+        RÓLUNK
+      </header>
+      <div>
+        <p>
+          2015-ben indultunk furulya-citera duóként, öt éve működünk – cajonnal és basszusgitárral kiegészülve – zenekarként. Nem a népzene felől kanyarodunk a kortárs felé, és nem is viszont: úgy adódott, hogy népi és urbánus hatások mindig párhuzamosan voltak jelen az életünkben, így a produkciónk sem keresgélés, hanem lenyomat.
+        </p>
+        <p>
+          <i>
+            &bdquo;...a produkciónk sem keresgélés, hanem lenyomat.&rdquo;
+          </i>
+        </p>
+        <p>
+          2019-ben jelent meg első kislemezünk, a Pusztafless, 2020-ban pedig bejutottunk a Szimpla Lemming programjába, ott voltunk a Veszprémi Utcazene Fesztiválon, majd az Öröm a zene tehetségkutatón az év felfedezettje díjat is megkaptuk.
+        </p>
+        <p>
+          Idén induló előadóként részt veszünk az NKA Hangfoglaló programjában, valamint a Kreatív Európa társfinanszírozásában megvalósuló, országhatárokon átívelő TREMOLO Projectben. Legújabb, Sötétkamra című kislemezünket október 14-én, az A38 hajón mutattuk be – az erről az anyagról singleként megjelent Csillagánizs című dalunk videoklipje pedig ott volt az idei Klipszemle versenyprogramjában is.
+        </p>
+      </div>
+      <div id="members">
+        <div id="z-carousel-container"> <!-- TODO: Parallax scrolling? -->
+          <div class="z-carousel">
+            <div class="z-carousel-slide">
+              <img src="assets/members_wide/gabor.jpg" alt="">
+            </div>
+            <div class="z-carousel-slide">
+              <img src="assets/members_wide/zsoca.jpg" alt="">
+            </div>
+            <div class="z-carousel-slide">
+              <img src="assets/members_wide/srob.jpg" alt="">
+            </div>
+            <div class="z-carousel-slide">
+              <img src="assets/members_wide/boldi.jpg" alt="">
+            </div>
+          </div>
+          <div class="z-members-ribbon">
+            <div class="z-members-ribbon-slide">
+                <p class="z-wide-lowercase">furulya, doromb, citera<p>
+                <p class="z-wide">Kovács Gábor<p>
+            </div>
+            <div class="z-members-ribbon-slide">
+                <p class="z-wide-lowercase">cajon<p>
+                <p class="z-wide">Moldván Zsolt<p>
+            </div>
+            <div class="z-members-ribbon-slide">
+                <p class="z-wide-lowercase">basszusgitár<p>
+                <p class="z-wide">Schneider Róbert<p>
+            </div>
+            <div class="z-members-ribbon-slide">
+                <p class="z-wide-lowercase">citera<p>
+                <p class="z-wide">Tamás Boldizsár<p>
+            </div>
+          </div>
+        </div>
+        <div class="z-btn-slide-left hidden-mobile" onclick="zScrollLeft()">
+          <span class="material-icons-outlined md-24">
+            arrow_back_ios
+          </span>
+        </div>
+        <div class="z-btn-slide-right hidden-mobile" onclick="zScrollRight()">
+          <span class="material-icons-outlined md-24" >
+            arrow_forward_ios
+          </span>
+        </div>
+      </div>
+      <script>
+        function zScrollRight(){
+            document.getElementById("z-carousel-container").scrollLeft += document.querySelector('.z-carousel-slide').offsetWidth;
+        }
+
+        function zScrollLeft(){
+            document.getElementById("z-carousel-container").scrollLeft -= document.querySelector('.z-carousel-slide').offsetWidth;
+        }
+      </script>
+    </section>
+
+    <section id="music" class="z-section"> <!-- TODO: Small screen sizes make bottom buttons unreachable. -->
+      <h3 class="w3-center z-wide">
+        ZENE
+      </h3>
+    	<div id="sotetkamra" class="w3-display-container z-music-panel">
+         <video autoplay muted loop poster="assets/music/sotetkamra.jpg" id="zajnal" class="z-video-music" style="opacity: 50%;">
+           <source src="assets/music/sotetkamra.mp4" type="video/mp4">
+         </video>
+    	   <a href="https://open.spotify.com/album/3iOPd3yPBtG2YyS3ltQRSy" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">sötétkamra</a>
+    	</div>
+    	<div id="csillaganizs" class="w3-display-container z-music-panel">
+         <video autoplay muted loop poster="assets/music/csillaganizs.jpg" id="zajnal" class="z-video-music">
+           <source src="assets/music/csillaganizs.mp4" type="video/mp4">
+         </video>
+         <a href="https://youtu.be/jk9oy0XXVuY" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">csillagánizs</a>
+    	</div>
+      <div id="vakfolt" class="w3-display-container z-music-panel">
+         <video autoplay muted loop poster="assets/music/vakfolt.jpg" id="zajnal" class="z-video-music">
+           <source src="assets/music/vakfolt.mp4" type="video/mp4">
+         </video>
+         <a href="https://youtu.be/SoqpvfHThXU" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">vakfolt</a>
+    	</div>
+    	<div id="komlo" class="w3-display-container z-music-panel">
+         <video autoplay muted loop poster="assets/music/komlo.jpg" id="zajnal" class="z-video-music">
+           <source src="assets/music/komlo.mp4" type="video/mp4">
+         </video>
+         <a href="https://www.youtube.com/watch?v=2qkPaPY1UXA" target="_blank" class="w3-display-middle w3-ripple z-wide-lowercase z-btn z-btn-def">komló</a>
+    	</div>
+    </section>
+
+    <section id="contact" class="z-section">
+      <h3 class="z-wide">
+        KONTAKT
+      </h3>
+      <div class="zReveal">
+        <a href="mailto:zajnalmusic@gmail.com" class="w3-margin w3-ripple z-wide-lowercase z-btn z-btn-def" style="margin-top: 0px !important;">
+    			e-mail
+    		</a>
+    		<a href="https://www.instagram.com/zajnalmusic/" target="_blank" class="w3-margin w3-ripple z-wide-lowercase z-btn z-btn-def">
+    			instagram
+    		</a>
+    		<a href="https://www.facebook.com/zajnalmusic/" target="_blank" class="w3-margin w3-ripple z-wide-lowercase z-btn z-btn-def">
+    			facebook
+    		</a>
+    		<a href="https://www.youtube.com/zajnalmusic/" target="_blank" class="w3-margin w3-ripple z-wide-lowercase z-btn z-btn-def">
+    			youtube
+    		</a>
+    		<a href="https://open.spotify.com/artist/0fPavCFAklDixqi98zT05V/" target="_blank" class="w3-margin w3-ripple z-wide-lowercase z-btn z-btn-def">
+    			spotify
+    		</a>
+    		<a href="https://soundcloud.com/zajnalmusic/" target="_blank" class="w3-margin w3-ripple z-wide-lowercase z-btn z-btn-def">
+    			soundcloud
+    		</a>
+      </div>
+      <div> <!-- ebből majd egy kép lesz -->
+      </div>
+    </section>
+
+    <footer class="z-section">
+    	<p class="z-wide-lowercase" style="text-indent: 0.6em;">&#169; Zajnal 2021</p>
+    </footer>
+
+  </body>
+</html>
