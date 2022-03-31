@@ -105,6 +105,12 @@ html {
   display: none;
 }
 
+#zNavbarBg {
+  width: 100vw;
+  height: 128px;
+  background-color: var(--z-black);
+}
+
 /* BUTTONS CSS */
 
 .z-btn {
@@ -453,7 +459,7 @@ html {
 
 @keyframes clip {
   from {background-color: white; clip-path: circle(6%);}
-  to {background-color: black; clip-path: circle(100%);}
+  to {background-color: var(--z-black); clip-path: circle(100%);}
 }
 
 .z-navanim-hamburger {
@@ -569,9 +575,7 @@ html {
 
 <body>
 
-<header id="home" class="z-section">
-</header>
-<div class="w3-display-container z-section" style="background-color: rgba(0,0,0,0);">
+<header class="w3-display-container z-section" style="background-color: rgba(0,0,0,0);">
     <video autoplay muted loop poster="assets/zajnal_hero.jpg" id="zajnal" class="z-video-hero">
       <source src="assets/zajnal_hero.mp4" type="video/mp4">
     </video>
@@ -591,7 +595,7 @@ html {
         </g>
       </svg>
     </div>
-  </div>
+</header>
 
 <div class="z-placeholder"></div>
 
@@ -744,13 +748,13 @@ function zScrollLeft(){
 </section>
 
 <footer class="w3-container w3-center z-footer">
-	<p class="z-wide-lowercase" style="text-indent: 0.6em;">&#169; Zajnal 2021</p>
+	<p class="z-wide-lowercase" style="text-indent: 0.6em;">&#169; Zajnal 2022</p>
 </footer>
 
 <nav>
   <div id="zFullscreenMenu" class="w3-top w3-large w3-display-container z-navanim-fullscreenmenu w3-padding-32"> <!-- TODO: Glitch a menüsáv tetején? -->
     <div class="w3-center">
-      <a href="" class="z-btn-disabled z-navanim-shop w3-margin w3-ripple z-wide-lowercase z-btn z-btn-navpanel">
+      <a href="https://shop.musicfashion.hu/index.php?id_product=95&controller=product" target=”_blank” class="z-navanim-shop w3-margin w3-ripple z-wide-lowercase z-btn z-btn-navpanel">
   			shop
   		</a>
     </div>
@@ -770,7 +774,7 @@ function zScrollLeft(){
     </button>
   </div>
   <!--<div id="gradient" class="w3-bottom w3-center" style="width: 100vw; height: 128px; background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1))"></div>-->
-  <div id="zNavbarbarBg" class="w3-bottom w3-center z-navanim-bg" style="width: 100vw; height: 128px; display: none;"></div>
+  <div id="zNavbarBg" class="w3-bottom w3-center z-navanim-bg" style="display: none;"></div>
   <div id="zBurger" class="w3-bottom" style="width: 100%; height: 128px; padding-top: 40px;">
     <div class="w3-center">
       <button class="z-btn z-btn-burger z-navanim-hamburger" style="padding:0;" onclick="open_zMenu();">
@@ -840,15 +844,15 @@ function zScrollLeft(){
   function open_zMenu() {
     document.getElementById("zNavbarbar").style.display = "block";
     document.getElementById("zFullscreenMenu").style.display = "block";
-    document.getElementById("zNavbarbarBg").style.display = "block";
+    document.getElementById("zNavbarBg").style.display = "block";
     document.getElementById("zBurger").style.display = "none";
-    document.getElementById("zNavbarbarBg").style.backgroundColor = "black";
+    document.getElementById("zNavbarBg").style.backgroundColor = "black";
   }
 
   function close_zMenu() {
     document.getElementById("zNavbarbar").style.display = "none";
     document.getElementById("zFullscreenMenu").style.display = "none";
-    document.getElementById("zNavbarbarBg").style.display = "none";
+    document.getElementById("zNavbarBg").style.display = "none";
     document.getElementById("zBurger").style.display = "initial";
   }
 
