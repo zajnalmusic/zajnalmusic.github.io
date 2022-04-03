@@ -17,7 +17,7 @@
 <style type="text/css">
 
 :root {
-  --z-black: #121212;
+  --z-black: rgba(18, 18, 18, 1);
   --z-white: #fdfdfd;
 }
 
@@ -89,11 +89,17 @@ html {
   padding-top: 36px;
 }
 
+#zGradient {
+  width: 100vw;
+  height: 128px;
+  background: linear-gradient(rgba(0,0,0,0), var(--z-black))
+}
+
 #zFullscreenMenu {
   width: 100%;
   height: calc(100% - 128px);
   color: var(--z-white);
-  background-color: var(--z-black);
+  background-color: rgba(18, 18, 18, 0.9);
   display: none;
   overflow-y: scroll;
   scroll-behavior: smooth;
@@ -108,7 +114,7 @@ html {
 #zNavbarBg {
   width: 100vw;
   height: 128px;
-  background-color: var(--z-black);
+  background-color: rgba(18, 18, 18, 0.9);
 }
 
 /* BUTTONS CSS */
@@ -303,17 +309,9 @@ html {
 
 /* MEMBERS CSS */
 
-.z-members-img {
-  height: calc(100vh - 320px);
-  min-height: 240px;
-  width: 100%;
-  object-fit: cover;
-  object-position: top;
-}
-
 .z-members-box {
   height: 80px;
-  position: relative;
+  background-color: rgba(18, 18, 18, 0.9);
 }
 
 #z-carousel-container {
@@ -365,7 +363,7 @@ html {
 
 .z-carousel-slide > img {
   min-height: 256px;
-  height: calc(100vh - 336px);
+  height: calc(100vh - 256px);
   width: 100vw;
   max-width: 800px;
   object-fit: cover;
@@ -459,7 +457,7 @@ html {
 
 @keyframes clip {
   from {background-color: white; clip-path: circle(6%);}
-  to {background-color: var(--z-black); clip-path: circle(100%);}
+  to {background-color: rgba(18, 18, 18, 0.9); clip-path: circle(100%);}
 }
 
 .z-navanim-hamburger {
@@ -623,41 +621,41 @@ html {
   </div>
   <div id="z-carousel-container" class="zReveal"> <!-- TODO: Parallax scrolling? -->
     <div class="z-carousel">
-      <div class="z-carousel-slide">
+      <div class="z-carousel-slide w3-display-container">
         <img src="assets/members_wide/gabor.jpg" alt="Kovács Gábor">
-        <div class="w3-display-container z-members-box zReveal">
+        <!--<div class="z-members-box zReveal w3-display-bottommiddle">
           <div class="w3-display-middle w3-center" style="width: calc(100% - 96px);">
             <p class="w3-small z-wide-lowercase" style="margin-bottom: -16px;">furulya, doromb, citera<p>
             <p class="w3-medium z-wide">KOVÁCS GÁBOR<p>
           </div>
-        </div>
+        </div>-->
       </div>
       <div class="z-carousel-slide">
         <img src="assets/members_wide/zsoca.jpg" alt="Moldván Zsolt">
-        <div class="w3-center z-members-box zReveal">
+        <!--<div class="z-members-box zReveal">
           <div class="w3-display-middle w3-center" style="width: calc(100% - 96px);">
             <p class="w3-small z-wide-lowercase" style="margin-bottom: -16px;">cajon<p>
             <p class="w3-medium z-wide">MOLDVÁN ZSOLT<p>
           </div>
-        </div>
+        </div>-->
       </div>
       <div class="z-carousel-slide">
         <img src="assets/members_wide/srob.jpg" alt="Schneider Róbert">
-        <div class="w3-center z-members-box zReveal">
+        <!--<div class="z-members-box zReveal">
           <div class="w3-display-middle w3-center" style="width: calc(100% - 96px);">
             <p class="w3-small z-wide-lowercase" style="margin-bottom: -16px;">basszusgitár<p>
             <p class="w3-medium z-wide">SCHNEIDER RÓBERT<p>
           </div>
-        </div>
+        </div>-->
       </div>
       <div class="z-carousel-slide">
         <img src="assets/members_wide/boldi.jpg" alt="Tamás Boldizsár">
-        <div class="w3-center z-members-box zReveal">
+        <!--<div class="z-members-box zReveal">
           <div class="w3-display-middle w3-center" style="width: calc(100% - 96px);">
             <p class="w3-small z-wide-lowercase" style="margin-bottom: -16px;">citera<p>
             <p class="w3-medium z-wide">TAMÁS BOLDIZSÁR<p>
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
   </div>
@@ -759,7 +757,7 @@ function zScrollLeft(){
   		</a>
     </div>
     <div class="w3-center">
-      <a href="org.html" class="z-navanim-org w3-margin w3-ripple z-wide-lowercase z-btn z-btn-navpanel">
+      <a href="https://drive.google.com/open?id=1j86YCEiEvs9uO-lXxsO7skr7QW4q_tWy" target=”_blank” class="z-navanim-org w3-margin w3-ripple z-wide-lowercase z-btn z-btn-navpanel">
         szervezőknek
       </a>
     </div>
@@ -773,7 +771,7 @@ function zScrollLeft(){
       <span class="material-icons-outlined md-24 w3-display-middle">keyboard_arrow_down</span>
     </button>
   </div>
-  <!--<div id="gradient" class="w3-bottom w3-center" style="width: 100vw; height: 128px; background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1))"></div>-->
+  <div id="zGradient" class="w3-bottom w3-center"></div>
   <div id="zNavbarBg" class="w3-bottom w3-center z-navanim-bg" style="display: none;"></div>
   <div id="zBurger" class="w3-bottom" style="width: 100%; height: 128px; padding-top: 40px;">
     <div class="w3-center">
@@ -789,7 +787,7 @@ function zScrollLeft(){
       </button>
     </div>
   </div>
-  <div id="zNavbarbar" class="w3-bottom" style="width: 100%; height: 128px; padding-top: 40px; display: none;">
+  <div id="zNavbar" class="w3-bottom" style="width: 100%; height: 128px; padding-top: 40px; display: none;">
     <div class="w3-content w3-cell-row z-nav">
     	<a href="#bio" class="w3-cell w3-center z-navanim-bio" onclick="close_zMenu();">
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
@@ -842,15 +840,14 @@ function zScrollLeft(){
 
 <script>
   function open_zMenu() {
-    document.getElementById("zNavbarbar").style.display = "block";
+    document.getElementById("zNavbar").style.display = "block";
     document.getElementById("zFullscreenMenu").style.display = "block";
     document.getElementById("zNavbarBg").style.display = "block";
     document.getElementById("zBurger").style.display = "none";
-    document.getElementById("zNavbarBg").style.backgroundColor = "black";
   }
 
   function close_zMenu() {
-    document.getElementById("zNavbarbar").style.display = "none";
+    document.getElementById("zNavbar").style.display = "none";
     document.getElementById("zFullscreenMenu").style.display = "none";
     document.getElementById("zNavbarBg").style.display = "none";
     document.getElementById("zBurger").style.display = "initial";
