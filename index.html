@@ -1,101 +1,188 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zajnal</title>
-<link href="https://fonts.googleapis.com/css?family=Roboto:400,900&amp;subset=latin-ext" rel="stylesheet">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="UTF-8">
 
-<style>
+        <title>Zajnal</title>
+        <meta name="description" content="Progressive instrumental world music from Hungary.">
+        <meta name="keywords" content="progressive world music Hungarian urban folk">
+        <meta name="author" content="Zajnal">
 
-html {
-	height: 100%
-}
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/zajnal.css">
+    </head>
 
-body {
-	text-align: center;
-	color: white;
-	background-color: #0C0906;
-	font-family: "Roboto 900", sans-serif;
-	font-size: 1.5vw;
-	width: 100%;
-	height: 100%;
-}
+    <body>
 
-.center {
-	width: 50%;
-	max-width: 800px;
-	margin-left: auto;
-	margin-right: auto;
-}	
+        <nav>
+            <a onclick="closeMenu()" href="#hero"><img src="img/zajnal_stamp_white.svg" alt="Zajnal logo"></a>
+            <div data-i18n-switcher>
+                <input type="radio" name="locale" id="hu" value="hu">
+                <label for="hu">HU</label>
+                <input type="radio" name="locale" id="en" value="en">
+                <label for="en">EN</label>
+            </div>
+            <button id="hamburger"><span></span></button>
+            <menu>
+                <li><a onclick="closeMenu()" href="#about" data-i18n-key="about">About</a></li>
+                <li><a onclick="closeMenu()" href="#watch" data-i18n-key="watch">Watch</a></li>
+                <li><a onclick="closeMenu()" href="#listen" data-i18n-key="listen">Listen</a></li>
+                <li><a onclick="closeMenu()" href="#contact" data-i18n-key="contact">Contact</a></li>
+            </menu>
+        </nav>
+        
+        <header id="hero">
+            <img src="img/horizontal_informal_b_1920.webp" alt="The band.">
+        </header>
+        <main>
+            <section>
+                <article id="about" class="scroll-reveal">
+                    <h2 data-i18n-key="about" data-inviewport="blur-up">About</h2>
+                    <p data-i18n-key="about-p-1" data-inviewport="fade-in">Our production is an imprint of <strong>rural and urban influences</strong>. We started as a <strong>flute-zither</strong> duo in 2015 and have been operating as a band for eight years now, adding a <strong>cajon</strong> and a <strong>bass guitar</strong> into the mix.</p>
+                    <p data-i18n-key="about-p-2" data-inviewport="fade-in">In <strong>2019</strong>, we released our first single, <a href="https://www.youtube.com/watch?v=Lj4vz7PE85I"><strong>Pusztafless</strong></a>. In <strong>2020</strong>, we made it into the <a href="http://keretblog.hu/nyolcadik-szimpla-lemming-program-buvos-tizenketto/"><strong>Szimpla Lemming program</strong></a>, performed at the <a href="https://www.utcazene.hu/"><strong>Veszprémi Utcazene Fesztivál</strong></a>, and received the <strong>Discovery of the Year</strong> award at the <a href="https://oromazene.hu/szakmai-dij/tortenetunk"><strong>Öröm a zene</strong></a> national talent competition.</p>
+                    <p data-i18n-key="about-p-3" data-inviewport="fade-in">In <strong>2021</strong>, as featured artists, we took part in the <a href="https://hangfoglalo.hu/aktualis/eloadok-es-mentorok-2021"><strong>NKA Hangfoglaló program</strong></a>, the international <a href="https://tremoloproject.eu/"><strong>TREMOLO Project</strong></a>, and came out with our second EP <a href="https://wmmd.lnk.to/Zajnal_Sotetkarma"><strong>Sötétkamra</strong></a>, and our first music video <a href="https://www.youtube.com/watch?v=jk9oy0XXVuY"><strong>Csillagánizs</strong></a>.</p>
+                    <p data-i18n-key="about-p-4" data-inviewport="fade-in">In <strong>2023</strong>, we performed at the <a href="https://tmw.postimees.ee/7772447/zajnal-traditsioonilised-ungari-dance-house-sundmused-on-meid-olulisel-maaral-mojutanud"><strong>Tallinn Music Week</strong></a> and had the opportunity to collaborate with <strong>Viola Okos</strong> and the <strong>Góbé</strong> band.</p>
+                    <hr data-inviewport="zoom-in-x" style="margin-block-end: var(--spacing-m);">
+                    <button data-i18n-key="members"  data-inviewport="fade-in" class="accordion">Members</button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li data-i18n-key="members-li-1" data-inviewport="fade-in"><i>Gábor Kovács</i> - shepherds flute, jaw harp, Hungarian zither</li>
+                            <li data-i18n-key="members-li-2" data-inviewport="fade-in"><i>Zsolt Moldván</i> - cajon</li>
+                            <li data-i18n-key="members-li-3" data-inviewport="fade-in"><i>Róbert Schneider</i> - bass guitar</li>
+                            <li data-i18n-key="members-li-4" data-inviewport="fade-in"><i>Boldizsár Tamás</i> - Hungarian zither</li>
+                        </ul>
+                    </div>
+                    <button data-i18n-key="achievements" data-inviewport="fade-in" class="accordion">Achievements</button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li data-i18n-key="achi-li-1" data-inviewport="fade-in">2020 - <a href="http://keretblog.hu/nyolcadik-szimpla-lemming-program-buvos-tizenketto/" target="_blank"><i>Szimpla Lemming Program</i></a> (local talent development program)</li>
+                            <li data-i18n-key="achi-li-2" data-inviewport="fade-in">2020 - <i>Fülesbagoly Budapest Final</i> (local band competiton): 1st place</li>
+                            <li data-i18n-key="achi-li-3" data-inviewport="fade-in">2020 - <a href="https://oromazene.hu/szakmai-dij/tortenetunk" target="_blank"><i>Öröm a zene</i></a> (national musical talent development programme): discovery of the year</li>
+                            <li data-i18n-key="achi-li-4" data-inviewport="fade-in">2021 - <i>Kárpát-medencei könnyűzenei verseny és találkozó (Nemzeti Művelődési Intézet)</i>, world music category: 1st place</li>
+                            <li data-i18n-key="achi-li-5" data-inviewport="fade-in">2021 - <a href="https://hangfoglalo.hu/aktualis/eloadok-es-mentorok-2021" target="_blank"><i>NKA Hangfoglaló program, induló előadói alprogram</i></a> (nation-wide mentorship programme)</li>
+                            <li data-i18n-key="achi-li-6" data-inviewport="fade-in">2021 - <a href="https://tremoloproject.eu/" target="_blank"><i>TREMOLO Project</i></a></li>
+                            <li data-i18n-key="achi-li-7" data-inviewport="fade-in">2021 - <i><a href="https://www.facebook.com/klipszemle/" target="_blank">Hungarian Music Video Review (Csillagánizs)</a></i></li>
+                            <li data-i18n-key="achi-li-8" data-inviewport="fade-in">2023 - <a href="https://tmw.postimees.ee/7772447/zajnal-traditsioonilised-ungari-dance-house-sundmused-on-meid-olulisel-maaral-mojutanud" target="_blank"><i>Tallinn Music Week</i></a></li>
+                        </ul>
+                    </div>
+                    <button data-i18n-key="press"  data-inviewport="fade-in" class="accordion">Press Highlights</button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li data-i18n-key="press-li-1" data-inviewport="fade-in"><a href="https://www.youtube.com/watch?v=bTRw7NIqWjM" target="_blank"><i>Csillagánizs (Zajnal) - M2 Petőfi TV, Én Vagyok Itt!</i></a></li>
+                            <li data-i18n-key="press-li-2" data-inviewport="fade-in"><i>“Playing analogue folk instruments over pop-rock drum and bass grooves or electronics is not news anymore, but to combine these musical traditions with such ease and amusement like Zajnal does is still not a common experience in Hungary.”</i> - <a href="https://recorder.blog.hu/2021/04/07/magyarradar_zajnal" target="_blank">Recorder.hu, Magyarradar</a></li>
+                            <li data-i18n-key="press-li-3" data-inviewport="fade-in"><i>“It would be a euphemism to describe Zajnal as world music.”</i> - <a href="https://recorder.blog.hu/2021/06/29/itt_a_hangfoglalo_program_zajnal_tobbre_vagytak_a_citera-furulya_kombonal" target="_blank">Recorder.hu</a></li>
+                            <li data-i18n-key="press-li-4" data-inviewport="fade-in"><i>“Without a singer, we have to fill so much more space”</i> - <a href="https://musicmedia.hu/zajnal-enek-hianyaban-joval-nagyobb-teret-kell-kitltenunk-20210716" target="_blank">Musicmedia.hu</a></li>
+                            <li data-i18n-key="press-li-5" data-inviewport="fade-in"><i>“Is it possible to seduce someone with a zither?”</i> - <a href="https://open.spotify.com/episode/28bOdBhQZ7icGf1KKRNO1V" target="_blank">Hangpróba podcast</a></li>
+                            <li data-i18n-key="press-li-6" data-inviewport="fade-in"><i>“Unique music for unique people!”</i> - <a href="https://musictunnel.blog.hu/2022/01/08/ilyen_volt_a_global_vibes" target="_blank">MusicTunnel</a></li>
+                        </ul>
+                    </div>
+                    <hr data-inviewport="zoom-in-x">
+                </article>
+                <article id="watch" class="scroll-reveal">
+                    <h2 data-i18n-key="watch" data-inviewport="blur-up">Watch</h2>
+                    <iframe data-inviewport="fade-in" style="--animation-duration: var(--time-m)" src="https://www.youtube.com/embed/TeevTicVfkU?si=uiJEpvGpTMipexGW&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe data-inviewport="fade-in" style="--animation-duration: var(--time-m)" src="https://www.youtube.com/embed/SoqpvfHThXU?si=nzbyNCmLnIM4FLIk&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <hr data-inviewport="zoom-in-x">
+                </article>
+                <article id="listen" class="scroll-reveal">
+                    <h2 data-i18n-key="listen" data-inviewport="blur-up">Listen</h2>
+                    <iframe data-inviewport="fade-in" style="--animation-duration: var(--time-m)" style="border-radius:12px" src="https://open.spotify.com/embed/album/4XZqoLo41DBDfY2rwxjCE1?utm_source=generator&theme=0" title="Spotify audio player" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe data-inviewport="fade-in" style="--animation-duration: var(--time-m)" style="border-radius:12px" src="https://open.spotify.com/embed/album/2Qlni4lGqZwH1SavFaZJG7?utm_source=generator&theme=0" title="Spotify audio player" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <div style="width: 100%;">
+                        <hr data-inviewport="zoom-in-x">
+                    </div>
+                </article>
+            </section>
+            <aside id="contact">
+                <article>
+                    <h2 data-i18n-key="contact" data-inviewport="blur-up">Contact</h2>               
+                    <ul>
+                        <li data-i18n-key="contact-li-1" data-inviewport="fade-in">Name: <i>Gábor Kovács</i></li>
+                        <li data-i18n-key="contact-li-2" data-inviewport="fade-in">E-mail: <i>zajnalmusic@gmail.com</i></li>
+                        <li data-i18n-key="contact-li-3" data-inviewport="fade-in">Phone: <i>+36 30 760 5977</i></li>
+                    </ul>
+                    <h3 data-i18n-key="socials" data-inviewport="fade-in">Social Media</h3>
+                    <ul class="icons-list">
+                        <li data-inviewport="fade-in">
+                            <a href="https://www.facebook.com/zajnalmusic" target="_blank">
+                                <svg role="img" aria-label="Facebook" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <title>Facebook</title>
+                                    <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li data-inviewport="fade-in" style="--animation-delay: var(--time-xs);">
+                            <a href="https://instagram.com/zajnalmusic" target="_blank">
+                                <svg role="img" aria-label="Instagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <title>Instagram</title>
+                                    <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li data-inviewport="fade-in" style="--animation-delay: var(--time-s);">
+                            <a href="https://www.youtube.com/zajnalmusic" target="_blank">
+                                <svg role="img" aria-label="YouTube" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                    <title>YouTube</title>
+                                    <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z"/>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                    <h3 data-i18n-key="streaming" data-inviewport="fade-in">Streaming</h3>
+                    <ul class="icons-list">
+                        <li data-inviewport="fade-in">
+                            <a href="https://open.spotify.com/artist/0fPavCFAklDixqi98zT05V" target="_blank">
+                                <svg role="img" aria-label="Spotify" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                                    <title>Spotify</title>
+                                    <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li data-inviewport="fade-in" style="--animation-delay: var(--time-xs);">
+                            <a href="https://www.deezer.com/en/artist/87503492" target="_blank">
+                                <svg role="img" aria-label="Deezer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                    <title>Deezer</title>
+                                    <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path d="M451.5 244.7H576V172H451.5zm0-173.9v72.7H576V70.8zm0 275.1H576V273.2H451.5zM0 447.1H124.5V374.4H0zm150.5 0H275V374.4H150.5zm150.5 0H425.5V374.4H301zm150.5 0H576V374.4H451.5zM301 345.9H425.5V273.2H301zm-150.5 0H275V273.2H150.5zm0-101.2H275V172H150.5z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li data-inviewport="fade-in" style="--animation-delay: var(--time-s);">
+                            <a href="https://music.apple.com/us/artist/zajnal/1501490702" target="_blank">
+                                <svg role="img" aria-label="Apple Music" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                    <title>Apple Music</title>
+                                    <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </article>
+                <hr data-inviewport="zoom-in-x" style="margin-block-end: var(--spacing-m);">
+                <article>
+                    <h2 data-i18n-key="docs" data-inviewport="blur-up">Docs</h2>               
+                    <ul>
+                        <li data-i18n-key="docs-li-1" data-inviewport="fade-in"><a href="https://docs.google.com/document/d/1eqMCwn3XVTFGDTUX-nBntgIzMq86vT3mfJarUxpPAjI/edit?usp=sharing" target="_blank">Technical rider</a></li>
+                    </ul>
+                </article>
+                <hr data-inviewport="zoom-in-x">
+            </aside>
+        </main>
 
-#logo {
-	margin-top: 24pt;
-	width: 100%;
-}
+        <footer>
+            <p data-i18n-key="footer-copyright" data-inviewport="fade-in">Copyright 2024 Zajnal</p>
+            <p data-i18n-key="footer-by" data-inviewport="fade-in">Designed by <a href="https://k0v1.hu/" target="_blank">k0v1</a></p>
+        </footer>
 
-#band {
-	image-rendering: pixelated;
-	width: 100%;
-	margin-bottom: 48pt;
-}
+        <script src="js/zajnal.js"></script>
+        <script src="js/locale.js"></script>
 
-#menu {
-	margin-top: 12pt;
-	margin-bottom: 12pt;
-	width: 100%;
-}
-
-h2 {
-	font-weight: 700;
-	font-size: 24pt;
-}
-
-a {
-	color: #FFFFFF;
-	text-decoration: none;
-}
-
-a:visited {
-	color: #3d2d5a;
-}
-
-a:hover {
-	color: #e91e63;
-}
-
-/*MEDIA QUERYS*/
-@media screen and (max-width: 800px) {
-	.center {
-		width: 75%;
-}	
-}
-
-
-</style>
-
-</head>
-
-<body>
-<div class="center">
-
-<img id="logo" class="center" src="logotype_white.svg" alt="Zajnal">
-
-<div id="menu">
-<h2>
-<a href="https://www.youtube.com/c/zajnalmusic" target="_blank">YOUTUBE</a>
-<a href="https://www.facebook.com/zajnalmusic" target="_blank">FACEBOOK</a>
-<a href="https://www.instagram.com/zajnalmusic/" target="_blank">INSTAGRAM</a>
-<a href="https://open.spotify.com/artist/0fPavCFAklDixqi98zT05V" target="_blank">SPOTIFY</a>
-<a href="https://soundcloud.com/zajnalmusic" target="_blank">SOUNDCLOUD</a>
-<a href="https://drive.google.com/open?id=1j86YCEiEvs9uO-lXxsO7skr7QW4q_tWy" target="_blank">PRESS PACK</a>
-</h2>
-</div>
-
-<img id="band" class="center" src="zajnal.png" alt="Band Illustration">
-
-</div>
-</body>
+    </body>
 
 </html>
