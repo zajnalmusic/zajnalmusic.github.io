@@ -534,6 +534,10 @@ iframe[title="Spotify audio player"] {
         display: block;
     }
 
+    h1, h2, h3, h4, h5, h6 {
+        hyphens: manual;
+    }
+
     div[data-i18n-switcher] {
         margin-inline: 0 var(--spacing-m);
         order: 2;
