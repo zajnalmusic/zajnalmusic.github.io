@@ -5,7 +5,7 @@
     --font-size: calc(1rem + 0.25vw);
     --line-height: calc(var(--font-size) + 0.5rem);
 
-    --font-size-ratio: 1.250;
+    --font-size-ratio: 1.333;
 
     --font-size-xs: calc(var(--font-size) / var(--font-size-ratio));
     --font-size-s: var(--font-size);
@@ -43,7 +43,7 @@
     /* COLOR */
 
     --color-text: #9E9E9E; /* Material Grey 500 */
-    --color-strong: #ffffff; /* pure white */
+    --color-strong: #eeeeee; /* pure white */
     --color-link: #2979FF; /* Material Blue A400 */
     --color-background: #121212;
 
@@ -67,10 +67,24 @@
 }
 
 @font-face {
+  font-display: swap;
+  font-family: 'Zajnal Display';
+  font-weight: 500;
+  src: url('/fonts/ZajnalDisplay-Bold.otf') format(truetype);
+}
+
+@font-face {
     font-display: swap;
     font-family: 'IBM Plex Sans Var';
     font-weight: 100 900;
     src: url('/fonts/IBM Plex Sans Var-Roman.woff2') format(woff2);
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Host Grotesk';
+  font-weight: 100 900;
+  src: url('/fonts/HostGrotesk-VariableFont_wght.ttf') format(woff2);
 }
 
 html {
@@ -97,23 +111,25 @@ html {
    ========================================================================== */
 
 *:first-child {
-    margin-block-start: 0;
+    margin-block-start: 0; /* TODO tök jó, csak az accordionokban a margin-block-end is 0... */
 }
 
 h1, h2, h3, h4, h5, h6, .accordion {
     color: var(--color-strong);
-    font-family: 'Jost', sans-serif;
     font-weight: var(--font-weight-s);
-    letter-spacing: var(--spacing-s);
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 
 h1 {
+    font-family: 'Zajnal Display', sans-serif;
+    letter-spacing: 0.1em;
     font-size: var(--font-size-xl);
 }
 
 h2 {
+    font-family: 'Zajnal Display', sans-serif;
     font-size: var(--font-size-l);
+    letter-spacing: 0.1em;
 }
 
 h3 {
@@ -225,7 +241,7 @@ body {
     background-color: var(--color-background);
     color: var(--color-text);
     display: grid;
-    font-family: 'IBM Plex Sans Var', sans-serif;
+    font-family: 'Host Grotesk', sans-serif;
     font-size: var(--font-size);
     grid-template-rows: auto, auto, 1fr, auto;
     place-items: center;
@@ -394,6 +410,7 @@ main > section {
     max-height: 0;
     overflow: hidden;
     transition: max-height var(--time-s) ease-in;
+    p { margin-block-end: 1em; } /* TODO this shouldn't be necessary */
 }
 
 .accordion.active {
